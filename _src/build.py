@@ -122,7 +122,7 @@ PRIVACY = f"""
   <li><strong>Blocks</strong> you set: the list of users you've blocked, so we can hide their content from you.</li>
 </ul>
 <h3>Location</h3>
-<p>If you allow location access, the app uses your device's <strong>approximate location</strong> (not precise GPS location), and only <strong>while you're using the app</strong>, to fill in your board ZIP code and to center the map near you. Taskr asks only for approximate location. The app converts your approximate location to a ZIP code on your device using the phone's built-in geocoder, and that ZIP code is sent to our servers to find nearby tasks. When you browse the map, the map's center point (which can be close to you) is sent to our servers to find nearby tasks. We use it only to answer that request and don't save it. We never collect location in the background. You can deny or revoke location access and enter a ZIP code instead.</p>
+<p>If you allow location access, the app uses your device's <strong>approximate location</strong> (not precise GPS location), and only <strong>while you're using the app</strong>, to fill in your board ZIP code and to center the map near you. Taskr asks only for approximate location. The app converts your approximate location to a ZIP code on your device using the phone's built-in geocoder (on Android, provided by Google; see {GOOGLE_PRIVACY}), and that ZIP code is sent to our servers to find nearby tasks. When you browse the map, the map's center point (which can be close to you) is sent to our servers to find nearby tasks. We use it only to answer that request and don't save it. We never collect location in the background. You can deny or revoke location access and enter a ZIP code instead.</p>
 <h3>Payments</h3>
 <p>Card payments are collected directly by <strong>Stripe</strong> in Stripe's payment sheet. <strong>Taskr never receives or stores your full card number.</strong> Payouts to Taskrs go through <strong>Stripe Connect</strong>: Stripe collects your identity and bank details on its own hosted onboarding pages. We store Stripe reference IDs (for example payment and transfer IDs, and your Connect account ID and status), amounts, and payout status.</p>
 <h3>Technical information</h3>
@@ -209,8 +209,9 @@ TERMS = f"""
 <p>Listings use one of two price types:</p>
 <ul>
   <li><strong>Fixed price:</strong> the Seeker sets the price, and the task is booked at that price.</li>
-  <li><strong>Negotiable:</strong> the listing has no set price. The person booking the task enters their price and pays it when they book, and that money is held in escrow until the job is done (see Section 5). The Seeker does not accept or approve the price first.</li>
+  <li><strong>Negotiable:</strong> the listing has no set price. The person booking the task enters their price when they book. The Seeker does not accept or approve the price first.</li>
 </ul>
+<p>For both price types, payment is charged when the task is booked and held in escrow until the job is confirmed done (see Section 5).</p>
 
 <h2>3. Accounts and dual roles</h2>
 <ol>
@@ -234,7 +235,7 @@ TERMS = f"""
 <p>Payments are processed by <strong>Stripe</strong> (including Stripe Connect for Taskr payouts). By using paid features you also agree to applicable Stripe terms.</p>
 <h3>5.1 Escrow and split (platform fee)</h3>
 <ol>
-  <li>When a task is booked and paid for (at the fixed price, or at the price entered when booking a negotiable task), funds are typically authorized/captured into <strong>escrow</strong> held via Stripe until release conditions are met.</li>
+  <li>Payment is charged when a task is booked (at the fixed price, or at the price entered when booking a negotiable task) and held in <strong>escrow</strong> via Stripe until the job is confirmed done or other release conditions are met.</li>
   <li>On successful completion and release, the task price is split approximately:
     <ul>
       <li><strong>~90%</strong> to the Taskr (payout via Connect, subject to Stripe readiness and verification); and</li>
