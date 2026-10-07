@@ -160,7 +160,7 @@ PRIVACY = f"""
 </ul>
 
 <h2>4. Retention</h2>
-<p>We keep account data while your account is active. When you delete your account (Section 6), we delete or anonymize your personal information within 30 days. The exception is records we must keep for legal, tax, payment, fraud-prevention, or dispute purposes (for example booking and payment ledgers, typically up to 7 years). We keep those with your identity removed where possible. <strong>Blocks</strong> you set are deleted with your account. <strong>Reports</strong> you filed are kept with your identity removed, for safety, moderation, and legal reasons, on the same retention terms as other records. Reports other people filed about you may be kept for moderation. Sign-in codes expire within minutes.</p>
+<p>We keep account data while your account is active. When you delete your account (Section 6), we delete or anonymize your personal information within 30 days. The exception is records we must keep for legal, tax, payment, fraud-prevention, or dispute purposes (for example booking and payment ledgers, typically up to 7 years). We keep those with your identity removed where possible. <strong>Blocks</strong> you set are deleted with your account. <strong>Reports</strong> you filed are kept with your identity removed, for safety, moderation, and legal reasons, on the same retention terms as other records. Reports other people filed about you may be kept for moderation. Sign-in codes expire after 10 minutes, and any you have are deleted with your account.</p>
 
 <h2>5. Security</h2>
 <p>All data between the app and our servers, and between our servers and our providers, is encrypted in transit (HTTPS/TLS). Sign-in codes are stored only as salted hashes. Access to production systems is restricted. No system is 100% secure.</p>
@@ -409,7 +409,7 @@ DELETE = f"""
   <li>Your email address, display name, home ZIP code, and listed skills. Your profile is replaced with "Deleted user."</li>
   <li>Your draft and open listings, which are cancelled, and their photos.</li>
   <li>Blocks you set.</li>
-  <li>Your ability to sign in. Sign-in codes expire within minutes.</li>
+  <li>Your ability to sign in, and your sign-in codes (which expire after 10 minutes anyway).</li>
 </ul>
 <p>If you set up payouts, your identity and bank details are held by Stripe, not Taskr. Stripe keeps its own records of your Connect account under <a href="https://stripe.com/privacy" rel="noopener">Stripe's privacy policy</a>.</p>
 
