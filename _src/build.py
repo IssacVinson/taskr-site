@@ -1,0 +1,416 @@
+#!/usr/bin/env python3
+"""Generates the static pages for taskrak.com. Run: python3 _src/build.py (from repo root)."""
+import os
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+EMAIL = "arcticautonomy@gmail.com"
+MAILTO = f'<a href="mailto:{EMAIL}">{EMAIL}</a>'
+ADDR = "12110 Business Blvd STE 6 PMB 162, Eagle River, AK 99577, USA"
+EFFECTIVE = "October 7, 2026"
+
+NAV = [("privacy", "Privacy"), ("terms", "Terms"), ("guidelines", "Guidelines"), ("delete-account", "Delete account")]
+
+def page(slug, title, desc, body, prefix):
+    """prefix: relative path to site root ('' for root, '../' for subfolders, '/' for 404)."""
+    nav = "".join(
+        f'<a href="{prefix}{s}/"' + (' aria-current="page"' if s == slug else "") + f">{label}</a>"
+        for s, label in NAV)
+    canon = "https://taskrak.com/" + (f"{slug}" if slug not in ("", "404") else "")
+    full_title = f"{title} | Taskr" if slug else "Taskr: local help, fixed prices"
+    return f"""<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{full_title}</title>
+<meta name="description" content="{desc}">
+{'' if slug == '404' else f'<link rel="canonical" href="{canon}">'}
+<meta name="theme-color" content="#0E4A46">
+<link rel="icon" href="{prefix}favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="{prefix}assets/favicon-32.png">
+<link rel="apple-touch-icon" href="{prefix}assets/apple-touch-icon.png">
+<link rel="stylesheet" href="{prefix}assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="{prefix or './'}"><img src="{prefix}assets/logo-96.png" alt="" width="40" height="40">Taskr</a>
+    <nav class="site-nav" aria-label="Site">{nav}</nav>
+  </div>
+</header>
+<main id="main">
+  <div class="wrap">
+{body}
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <nav aria-label="Footer"><a href="{prefix}privacy/">Privacy Policy</a><a href="{prefix}terms/">Terms of Service</a><a href="{prefix}guidelines/">Community Guidelines</a><a href="{prefix}delete-account/">Delete your account</a></nav>
+    <p>&copy; 2026 Arctic Autonomy Ventures LLC d/b/a Taskr &middot; Alaska, USA</p>
+    <p>Contact: {MAILTO}</p>
+  </div>
+</footer>
+</body>
+</html>
+"""
+
+def write(slug, html):
+    path = os.path.join(ROOT, slug, "index.html") if slug not in ("", "404") else os.path.join(ROOT, "index.html" if slug == "" else "404.html")
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    with open(path, "w") as f:
+        f.write(html)
+    print("wrote", os.path.relpath(path, ROOT))
+
+# ---------------------------------------------------------------- landing
+LANDING = f"""
+<section class="hero">
+  <img src="assets/taskr-icon-512.png" alt="Taskr logo" width="112" height="112">
+  <h1>Taskr</h1>
+  <p class="lead">A local task marketplace. Post a one-off task near you, or book one and get paid to help a neighbor.</p>
+</section>
+<div class="card">
+  <ul>
+    <li><strong>Seekers</strong> post local tasks with photos, a price, and a neighborhood. The street address stays private until someone books.</li>
+    <li><strong>Taskrs</strong> browse the board or map, book a task, and coordinate in a private booking chat.</li>
+    <li>Payments are held securely through Stripe until both sides confirm the job is done. Tips go 100% to the Taskr.</li>
+  </ul>
+  <p>One account can do both. Taskr is for people 18 and older in the United States.</p>
+</div>
+<div class="links">
+  <a href="privacy/"><strong>Privacy Policy</strong><span>What we collect and how we use it</span></a>
+  <a href="terms/"><strong>Terms of Service</strong><span>The rules for using Taskr</span></a>
+  <a href="delete-account/"><strong>Delete your account</strong><span>How to delete your Taskr account and data</span></a>
+</div>
+<p>Questions? Email {MAILTO}.</p>
+<p class="meta">Taskr is operated by Arctic Autonomy Ventures LLC d/b/a Taskr, an Alaska limited liability company.</p>
+"""
+
+# ---------------------------------------------------------------- privacy
+PRIVACY = f"""
+<h1>Taskr Privacy Policy</h1>
+<div class="meta">
+  <p><strong>Effective date:</strong> {EFFECTIVE}</p>
+  <p><strong>Operator:</strong> Arctic Autonomy Ventures LLC d/b/a Taskr ("Taskr," "we," "us"), {ADDR}</p>
+  <p><strong>Contact:</strong> {MAILTO}</p>
+</div>
+
+<p>This policy explains what personal information the Taskr mobile app and service (the "Service") collect, how we use and share it, and the choices you have. Taskr is a marketplace where people ("Seekers") post local one-off tasks and other people ("Taskrs") book and complete them. One account can do both.</p>
+
+<h2>1. Information we collect</h2>
+<h3>Account information you provide</h3>
+<ul>
+  <li><strong>Email address.</strong> We use it to sign you in with one-time codes sent to your email and to contact you about your account.</li>
+  <li><strong>Display name</strong> (shown to other users). If you don't set one, we create one from your email.</li>
+  <li><strong>Home ZIP code</strong> (optional), and <strong>skills</strong> you choose to list.</li>
+</ul>
+<h3>Task, booking, and community content</h3>
+<ul>
+  <li><strong>Listings:</strong> title, description, labor price or "negotiate," materials mode and budget, <strong>photos you upload</strong> (up to 10 per listing), and the <strong>work address</strong> (street, city, state, ZIP). The public board and map show only a neighborhood-level area (the ZIP-code area) and never your street address. The street address is shown only to the person who books the task.</li>
+  <li><strong>Bookings:</strong> status, agreed price, platform fee, payout amount, confirmations, disputes and the reasons you give, and tips.</li>
+  <li><strong>Messages</strong> you send in a booking's chat thread.</li>
+  <li><strong>Ratings</strong> (1&ndash;5 stars and an optional comment) that you give and receive.</li>
+</ul>
+<h3>Location</h3>
+<p>If you allow location access, the app uses your device's location <strong>while you're using it</strong> to fill in your board ZIP code and to center the map on you. The app converts your location to a ZIP code on your device using the phone's built-in geocoder. When you browse the map, the map's center point (which can be close to your location) is sent to our servers to find nearby tasks. We use it only to answer that request and don't save it. We never collect location in the background. You can deny or revoke location access and enter a ZIP code instead.</p>
+<h3>Payments</h3>
+<p>Card payments are collected directly by <strong>Stripe</strong> in Stripe's payment sheet. <strong>Taskr never receives or stores your full card number.</strong> Payouts to Taskrs go through <strong>Stripe Connect</strong>: Stripe collects your identity and bank details on its own hosted onboarding pages. We store Stripe reference IDs (for example payment and transfer IDs, and your Connect account ID and status), amounts, and payout status.</p>
+<h3>Technical information</h3>
+<ul>
+  <li>Our servers and hosting provider process technical data needed to run and secure the Service, such as IP address, request times, and error logs. We use rate limits to prevent abuse of sign-in codes.</li>
+  <li>Third-party components in the app collect some technical data on their own: the <strong>Google Maps SDK</strong> (device and SDK metadata, IP address, a Maps-specific pseudonymous ID, map interaction events such as panning and zooming, and SDK crash data), and the <strong>Stripe SDK</strong> (device characteristics used for fraud prevention during payment). We don't use advertising SDKs or advertising IDs, and we don't add analytics or crash-reporting tools of our own.</li>
+</ul>
+<p><strong>What we don't collect:</strong> contacts, calendar, SMS or call logs, microphone or camera recordings (the app doesn't access the camera; photos come from your photo library when you choose them), health data, or background location.</p>
+
+<h2>2. How we use information</h2>
+<ul>
+  <li>Create and secure your account, and sign you in with one-time codes sent to your email.</li>
+  <li>Run the Service: show nearby tasks, let you post, book, chat, confirm, rate, and tip, and show the work address to the person who books.</li>
+  <li>Process payments, hold funds in escrow until both parties confirm, release payouts (90% of the labor price goes to the Taskr and 10% is Taskr's platform fee; tips go 100% to the Taskr), and handle disputes and refunds.</li>
+  <li>Prevent fraud, abuse, and security incidents, and enforce our <a href="../terms/">Terms</a> and <a href="../guidelines/">Community Guidelines</a> (including reviewing messages, photos, and confirmations when you open a dispute).</li>
+  <li>Send transactional emails such as sign-in codes and account or booking notices. We don't send marketing without your consent.</li>
+  <li>Comply with law, taxes, and accounting obligations.</li>
+</ul>
+<p>We <strong>do not sell</strong> your personal information and do not use it for targeted advertising.</p>
+
+<h2>3. How we share information</h2>
+<ul>
+  <li><strong>Other users:</strong> your display name, ratings, skills, and your listings (text, photos, neighborhood area) are visible to other Taskr users. Messages are visible to the other person in that booking. The work address is shared with the person who books your task.</li>
+  <li><strong>Service providers</strong> that process data for us under contract:
+    <ul>
+      <li><strong>Stripe</strong> (payments, escrow, Connect payouts, fraud prevention). We give Stripe your email and account ID when you set up payouts.</li>
+      <li><strong>Resend</strong> (sending email sign-in codes and account emails).</li>
+      <li><strong>Render</strong> (application hosting and database, USA).</li>
+      <li><strong>Cloudflare R2</strong> (listing photo storage). Listing photos are served from a public web address so other users can see them.</li>
+      <li><strong>Google</strong> (map display through the Google Maps SDK, and on-device geocoding through Android).</li>
+    </ul>
+  </li>
+  <li><strong>Legal and safety:</strong> when required by law or to protect the rights, safety, and property of users, the public, or Taskr.</li>
+  <li><strong>Business transfers:</strong> in connection with a merger, sale, or reorganization, under this policy's protections.</li>
+</ul>
+
+<h2>4. Retention</h2>
+<p>We keep account data while your account is active. When you delete your account (Section 6), we delete or anonymize your personal information within 30 days. The exception is records we must keep for legal, tax, payment, fraud-prevention, or dispute purposes (for example booking and payment ledgers, typically up to 7 years). We keep those with your identity removed where possible. Sign-in code records expire within minutes and are periodically purged.</p>
+
+<h2>5. Security</h2>
+<p>All data between the app and our servers, and between our servers and our providers, is encrypted in transit (HTTPS/TLS). Sign-in codes are stored only as salted hashes. Access to production systems is restricted. No system is 100% secure.</p>
+
+<h2>6. Your choices and rights</h2>
+<ul>
+  <li><strong>Delete your account:</strong> in the app, go to <strong>Profile &rarr; Delete account</strong>, or email {MAILTO} from the email address on your account. Full instructions, including what is deleted and what is kept, are at <a href="../delete-account/">taskrak.com/delete-account</a>.</li>
+  <li><strong>Access or correct:</strong> you can edit your display name, home ZIP, and skills in the app. For other requests, email {MAILTO}.</li>
+  <li><strong>Location:</strong> turn location access off at any time in your device settings.</li>
+  <li>Depending on where you live, you may have extra rights (for example access, deletion, correction, portability, or appeal). We'll respond within the time required by law.</li>
+</ul>
+
+<h2>7. Children</h2>
+<p>Taskr is only for people <strong>18 and older</strong>. We don't knowingly collect information from anyone under 18. If you believe a minor has an account, contact {MAILTO} and we'll delete it.</p>
+
+<h2>8. Location of processing</h2>
+<p>Taskr is offered in the United States and data is processed in the United States.</p>
+
+<h2>9. Changes</h2>
+<p>We'll post updates here and change the effective date. If changes are material, we'll notify you in the app or by email.</p>
+
+<h2>10. Contact</h2>
+<p>{MAILTO}<br>Arctic Autonomy Ventures LLC d/b/a Taskr<br>12110 Business Blvd STE 6 PMB 162<br>Eagle River, AK 99577, USA</p>
+"""
+
+# ---------------------------------------------------------------- terms
+TERMS = f"""
+<h1>Taskr Terms of Service</h1>
+<div class="meta">
+  <p><strong>Effective date:</strong> {EFFECTIVE}</p>
+  <p><strong>Operator:</strong> Arctic Autonomy Ventures LLC d/b/a <strong>Taskr</strong> (an Alaska limited liability company)</p>
+  <p><strong>Contact:</strong> {MAILTO} &middot; 12110 Business Blvd STE 6 PMB 162, Eagle River, AK 99577</p>
+</div>
+
+<h2>1. Agreement</h2>
+<p>By creating an account, accessing, or using the Taskr mobile or web application (the "<strong>Service</strong>"), you agree to these Terms of Service (the "<strong>Terms</strong>") and our <a href="../privacy/">Privacy Policy</a>. If you do not agree, do not use Taskr.</p>
+<p>You must be at least <strong>18</strong> years old and able to form a binding contract under applicable U.S. and Alaska law.</p>
+
+<h2>2. What Taskr Is</h2>
+<p>Taskr is an online <strong>marketplace</strong> that connects:</p>
+<ul>
+  <li><strong>Seekers</strong> &mdash; people who post fixed-price tasks (listings) for local help; and</li>
+  <li><strong>Taskrs</strong> &mdash; people who book and perform those tasks.</li>
+</ul>
+<p>Taskr is a <strong>platform</strong>, not the employer, contractor, or agent of Seekers or Taskrs (except as needed to operate payments/escrow as described below). Seekers and Taskrs contract with each other for the task; Taskr provides tools, messaging, and payment facilitation.</p>
+<p>There is <strong>no bidding</strong>. Listings are posted at a <strong>fixed price</strong> set by the Seeker.</p>
+
+<h2>3. Accounts and dual roles</h2>
+<ol>
+  <li>You must provide accurate information and keep it current.</li>
+  <li>You are responsible for activity under your account and for safeguarding login/OTP access.</li>
+  <li>One account may act as <strong>both</strong> Seeker and Taskr (<strong>dual-role</strong>), subject to these Terms and any in-app role rules.</li>
+  <li>We may suspend or terminate accounts that violate these Terms, applicable law, or our <a href="../guidelines/">Community Guidelines</a>.</li>
+  <li>You can delete your account at any time in the app under <strong>Profile &rarr; Delete account</strong>. See <a href="../delete-account/">Delete your account</a>.</li>
+</ol>
+
+<h2>4. Listings, booking, and address privacy</h2>
+<ol>
+  <li>Seekers may create listings with task details, price, skills/materials notes, and work location.</li>
+  <li><strong>Street-level address privacy:</strong> Before a booking is confirmed, public board/map views may show approximate location (for example pins using coordinates) <strong>without</strong> revealing the full street address. Full work address is shared with the Taskr <strong>after</strong> a successful book, as needed to perform the task.</li>
+  <li>Taskrs book open listings; booking creates a booking record and starts payment/escrow as described below.</li>
+  <li>If someone else books first, the listing may no longer be available.</li>
+  <li>Seekers may cancel eligible <strong>draft/open</strong> listings per in-app rules before a successful book; after booking, cancellation and refunds follow Section 8 and our dispute process.</li>
+</ol>
+
+<h2>5. Payments, escrow, platform fee, and tips</h2>
+<p>Payments are processed by <strong>Stripe</strong> (including Stripe Connect for Taskr payouts). By using paid features you also agree to applicable Stripe terms.</p>
+<h3>5.1 Escrow and split (platform fee)</h3>
+<ol>
+  <li>When a Seeker books (or pays for) a task, funds are typically authorized/captured into <strong>escrow</strong> held via Stripe until release conditions are met.</li>
+  <li>On successful completion and release, the task price is split approximately:
+    <ul>
+      <li><strong>~90%</strong> to the Taskr (payout via Connect, subject to Stripe readiness and verification); and</li>
+      <li><strong>~10%</strong> platform fee to Arctic Autonomy Ventures LLC d/b/a Taskr.</li>
+    </ul>
+  </li>
+  <li>Exact amounts, timing, and currency are shown in-app. Taxes (if any) are your responsibility unless we state otherwise in writing.</li>
+</ol>
+<h3>5.2 Dual confirmation and release</h3>
+<ol>
+  <li>Completion generally requires <strong>dual confirmation</strong> (Seeker and Taskr confirm the work is done), or other release rules we publish in-app.</li>
+  <li>After release, escrow is paid out per the split above.</li>
+  <li>Auto-release or time-based release may apply if described in-app; we may adjust those rules with notice.</li>
+</ol>
+<h3>5.3 Tips</h3>
+<ol>
+  <li>After escrow <strong>release</strong>, Seekers may optionally tip the Taskr.</li>
+  <li>Tips are paid <strong>100% to the Taskr</strong> (platform fee <strong>0%</strong> on tips), subject to Stripe processing and Taskr Connect payout readiness.</li>
+  <li>Tips are voluntary and generally non-refundable once paid, except as required by law or a successful dispute determination.</li>
+</ol>
+<h3>5.4 Failed or incomplete payouts</h3>
+<p>If a Taskr&rsquo;s Connect account cannot receive transfers (for example payouts not ready), payment may fail or be delayed. We may show an in-app error and ask the Taskr to finish onboarding.</p>
+
+<h2>6. Ratings, messaging, and conduct</h2>
+<ol>
+  <li>After eligible bookings, users may leave ratings/reviews that must be honest and lawful.</li>
+  <li>In-app chat is for coordinating the booked task. Do not harass, spam, or solicit off-platform payments to evade fees.</li>
+  <li>You must follow our <a href="../guidelines/">Community Guidelines &amp; Acceptable Use</a>.</li>
+</ol>
+
+<h2>7. Disputes between Seekers and Taskrs</h2>
+<ol>
+  <li>If something goes wrong (quality, no-show, incomplete work, payment issues), use in-app dispute tools where available.</li>
+  <li>We may review evidence (messages, photos, confirmations) and take actions we believe are fair, including refunds, partial release, account limits, or other remedies.</li>
+  <li>Our decision on platform escrow disputes is final as between you and the platform for escrow disposition, without limiting your rights against the other party under law.</li>
+  <li>Opening multiple disputes on the same matter may be rejected as already disputed/resolved.</li>
+</ol>
+
+<h2>8. Cancellations and refunds</h2>
+<ol>
+  <li><strong>Pre-book:</strong> Seekers may cancel eligible open/draft listings per in-app rules.</li>
+  <li><strong>Post-book / mid-task:</strong> Cancellations, refunds, and payouts depend on status (authorized, captured, confirmed, released) and any dispute outcome.</li>
+  <li>We do not guarantee refunds in every case. Chargebacks filed in bad faith may lead to account suspension.</li>
+</ol>
+
+<h2>9. Independent contractors; no employment</h2>
+<p>Taskrs are independent contractors (or otherwise self-employed) relative to Seekers and to Taskr, unless a written agreement says otherwise. Nothing in these Terms creates an employment, partnership, or joint-venture relationship. Taskrs are responsible for their own tools, licenses, insurance, and taxes as required by law (including Alaska local requirements where applicable).</p>
+
+<h2>10. Prohibited uses</h2>
+<p>You may not use Taskr to:</p>
+<ul>
+  <li>violate law (including safety, licensing, discrimination, or fraud laws);</li>
+  <li>post illegal, dangerous, or deceptive tasks;</li>
+  <li>scrape, reverse engineer, or abuse the Service;</li>
+  <li>evade escrow/fees via off-app payment for Taskr-originated tasks;</li>
+  <li>share another person&rsquo;s private address or personal data without authorization;</li>
+  <li>interfere with payments, ratings, or disputes in bad faith.</li>
+</ul>
+
+<h2>11. Intellectual property</h2>
+<p>Taskr, its branding, and software are owned by Arctic Autonomy Ventures LLC or its licensors. You retain rights to content you post, and grant us a worldwide, non-exclusive license to host, display, and use that content to operate and improve the Service.</p>
+
+<h2>12. Disclaimers</h2>
+<p>THE SERVICE IS PROVIDED <strong>"AS IS"</strong> AND <strong>"AS AVAILABLE."</strong> TO THE MAXIMUM EXTENT PERMITTED BY LAW, WE DISCLAIM WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT. We do not guarantee that every Seeker or Taskr is reliable, skilled, or insured, or that every task will be completed satisfactorily.</p>
+
+<h2>13. Limitation of liability</h2>
+<p>TO THE MAXIMUM EXTENT PERMITTED BY LAW, ARCTIC AUTONOMY VENTURES LLC AND ITS AFFILIATES WILL NOT BE LIABLE FOR INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, OR FOR LOST PROFITS, DATA, OR GOODWILL. OUR TOTAL LIABILITY FOR CLAIMS RELATING TO THE SERVICE WILL NOT EXCEED THE GREATER OF (A) AMOUNTS YOU PAID TO US IN PLATFORM FEES IN THE <strong>12 MONTHS</strong> BEFORE THE CLAIM OR (B) <strong>$100</strong>.</p>
+<p>Some jurisdictions (including consumer protections) do not allow certain limits; in those cases our liability is limited to the fullest extent allowed.</p>
+
+<h2>14. Indemnity</h2>
+<p>You will defend and indemnify Arctic Autonomy Ventures LLC against claims arising from your content, tasks, performance or non-performance of work, misuse of the Service, or violation of these Terms or law&mdash;except to the extent caused by our willful misconduct.</p>
+
+<h2>15. Governing law and venue</h2>
+<p>These Terms are governed by the laws of the <strong>State of Alaska</strong>, excluding conflict-of-law rules. Courts located in the <strong>Municipality of Anchorage</strong>, Alaska, will have exclusive jurisdiction, unless applicable law requires otherwise.</p>
+
+<h2>16. Changes</h2>
+<p>We may update these Terms by posting a new version with an updated effective date. Continued use after the effective date means you accept the changes. Material changes may also be notified in-app or by email where appropriate.</p>
+
+<h2>17. Contact</h2>
+<p>Questions about these Terms: {MAILTO} &middot; Arctic Autonomy Ventures LLC, 12110 Business Blvd STE 6 PMB 162, Eagle River, AK 99577.</p>
+"""
+
+# ---------------------------------------------------------------- guidelines
+GUIDELINES = f"""
+<h1>Community Guidelines &amp; Acceptable Use</h1>
+<div class="meta">
+  <p><strong>Effective date:</strong> {EFFECTIVE}</p>
+  <p><strong>Operator:</strong> Arctic Autonomy Ventures LLC d/b/a <strong>Taskr</strong></p>
+</div>
+<p>These guidelines are part of the <a href="../terms/">Taskr Terms of Service</a>.</p>
+
+<h2>Be a good neighbor</h2>
+<p>Taskr is for real local help at a clear fixed price. Treat people the way you&rsquo;d want to be treated on a task in your own community (including across Alaska&rsquo;s towns and cities).</p>
+<p>You must be <strong>18+</strong> to use Taskr.</p>
+
+<h2>Do</h2>
+<ul>
+  <li>Post accurate listings and show up (or cancel early when rules allow).</li>
+  <li>Keep chat focused on the task.</li>
+  <li>Protect privacy: don&rsquo;t share someone&rsquo;s full address or personal info beyond what&rsquo;s needed.</li>
+  <li>Use escrow and in-app payments for Taskr tasks.</li>
+  <li>Leave honest ratings after eligible tasks.</li>
+</ul>
+
+<h2>Don&rsquo;t</h2>
+<ul>
+  <li>Harass, threaten, discriminate, or scam anyone.</li>
+  <li>Post illegal, unsafe, or deceptive tasks.</li>
+  <li>Bid, undercut off-app to dodge fees, or fake confirmations/tips/disputes.</li>
+  <li>Spam, scrape, or abuse sign-in codes or messaging.</li>
+  <li>Upload others&rsquo; private photos or documents without permission.</li>
+</ul>
+
+<h2>Enforcement</h2>
+<p>We may warn, limit features, suspend, or ban accounts that break these guidelines, our Terms, or the law. Serious safety or fraud issues may be reported to authorities.</p>
+<p>Questions: {MAILTO}</p>
+"""
+
+# ---------------------------------------------------------------- delete account
+DELETE = f"""
+<h1>Delete your Taskr account</h1>
+<p class="meta">This page explains how to delete your account in the <strong>Taskr</strong> app, developed by <strong>Arctic Autonomy Ventures LLC</strong>, and what happens to your data.</p>
+
+<h2>Option 1: Delete in the app</h2>
+<div class="card">
+<ol>
+  <li>Open the Taskr app and sign in.</li>
+  <li>Go to <strong>Profile</strong>.</li>
+  <li>Tap <strong>Delete account</strong>.</li>
+  <li>Review what will be deleted and what will be kept, then confirm. You may be asked to enter a one-time code sent to your email to confirm it's you.</li>
+</ol>
+<p>You'll be signed out and won't be able to sign in to the deleted account again.</p>
+</div>
+
+<h2>Option 2: Request deletion by email</h2>
+<div class="card">
+<p>If you can't use the app, email <a href="mailto:{EMAIL}?subject=Delete%20my%20Taskr%20account">{EMAIL}</a>:</p>
+<ul>
+  <li>Send it <strong>from the email address on your Taskr account</strong>, so we can confirm the request is yours.</li>
+  <li>Use the subject line <strong>"Delete my Taskr account"</strong>.</li>
+</ul>
+<p>We may reply to confirm before we delete anything. We won't ask for your card number or password.</p>
+</div>
+
+<div class="card callout">
+<p><strong>Before you delete:</strong> finish or cancel any active bookings first. We can't delete an account while a booking is booked, in progress, waiting for confirmation, or in dispute, or while payment is held in escrow. If you're a Taskr, make sure any pending payout has been paid out.</p>
+</div>
+
+<h2>What we delete</h2>
+<ul>
+  <li>Your email address, display name, home ZIP code, and listed skills. Your profile is replaced with "Deleted user."</li>
+  <li>Your draft and open listings, which are cancelled, and their photos.</li>
+  <li>Your ability to sign in. Sign-in code records expire within minutes and are purged.</li>
+</ul>
+<p>If you set up payouts, your identity and bank details are held by Stripe, not Taskr. Stripe keeps its own records of your Connect account under <a href="https://stripe.com/privacy" rel="noopener">Stripe's privacy policy</a>.</p>
+
+<h2>What we keep, and for how long</h2>
+<ul>
+  <li><strong>Booking, payment, and dispute records</strong> (for example amounts, platform fees, payouts, tips, confirmations, and dispute outcomes), which we must keep for legal, tax, accounting, fraud-prevention, and dispute purposes. We keep these for <strong>up to 7 years</strong>, with your identity removed where possible.</li>
+  <li>Ratings and booking chat messages that are part of those records may stay attached to the booking, shown as from "Deleted user."</li>
+  <li>Information we must keep to comply with a legal obligation or to resolve an open legal claim, only for as long as that requires.</li>
+</ul>
+
+<h2>Timeline</h2>
+<p>We complete deletion within <strong>30 days</strong> of your request. Retained records are deleted at the end of their retention period (up to 7 years).</p>
+
+<h2>Delete some data without deleting your account</h2>
+<ul>
+  <li>Edit or clear your display name, home ZIP, and skills in <strong>Profile</strong>.</li>
+  <li>Cancel your draft or open listings in the app to remove them and their photos.</li>
+  <li>Turn off location access in your device settings at any time.</li>
+  <li>For anything else, email {MAILTO} from your account email.</li>
+</ul>
+
+<p>See our <a href="../privacy/">Privacy Policy</a> for more on how Taskr handles your data.</p>
+"""
+
+NOT_FOUND = """
+<h1>Page not found</h1>
+<p>Sorry, we couldn't find that page.</p>
+<div class="links">
+  <a href="/"><strong>Home</strong><span>About Taskr</span></a>
+  <a href="/privacy/"><strong>Privacy Policy</strong><span>What we collect and why</span></a>
+  <a href="/terms/"><strong>Terms of Service</strong><span>The rules for using Taskr</span></a>
+  <a href="/delete-account/"><strong>Delete your account</strong><span>How to delete your account</span></a>
+</div>
+"""
+
+write("", page("", "Taskr", "Taskr is a local task marketplace: post a one-off task near you, or book one and get paid to help a neighbor.", LANDING, ""))
+write("privacy", page("privacy", "Privacy Policy", "Taskr Privacy Policy: what the Taskr app collects, how we use and share it, and your choices.", PRIVACY, "../"))
+write("terms", page("terms", "Terms of Service", "Taskr Terms of Service.", TERMS, "../"))
+write("guidelines", page("guidelines", "Community Guidelines", "Taskr Community Guidelines and Acceptable Use.", GUIDELINES, "../"))
+write("delete-account", page("delete-account", "Delete your account", "How to delete your Taskr account and what happens to your data.", DELETE, "../"))
+write("404", page("404", "Page not found", "Page not found.", NOT_FOUND, "/"))
