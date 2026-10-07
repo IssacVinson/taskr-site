@@ -4,6 +4,7 @@ import os
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 EMAIL = "arcticautonomy@gmail.com"
 MAILTO = f'<a href="mailto:{EMAIL}">{EMAIL}</a>'
+GOOGLE_PRIVACY = '<a href="https://policies.google.com/privacy" rel="noopener">Google&rsquo;s Privacy Policy</a>'
 ADDR = "12110 Business Blvd STE 6 PMB 162, Eagle River, AK 99577, USA"
 EFFECTIVE = "October 7, 2026"
 
@@ -99,9 +100,9 @@ PRIVACY = f"""
 <h2>1. Information we collect</h2>
 <h3>Account information you provide</h3>
 <ul>
-  <li><strong>Email address.</strong> We use it to sign you in with one-time codes sent to your email and to contact you about your account.</li>
+  <li><strong>Email address.</strong> We use it to sign you in with one-time codes sent to your email, and to reply if you contact us.</li>
   <li><strong>Display name</strong> (shown to other users). If you don't set one, we create one from your email.</li>
-  <li><strong>Home ZIP code</strong> (optional), and <strong>skills</strong> you choose to list.</li>
+  <li><strong>Home ZIP code</strong> (optional), a short <strong>bio</strong> (optional), and <strong>skills</strong> you choose to list.</li>
 </ul>
 <h3>Task, booking, and community content</h3>
 <ul>
@@ -110,24 +111,34 @@ PRIVACY = f"""
   <li><strong>Messages</strong> you send in a booking's chat thread.</li>
   <li><strong>Ratings</strong> (1&ndash;5 stars and an optional comment) that you give and receive.</li>
 </ul>
+<h3>Board search and nearby results</h3>
+<ul>
+  <li><strong>Board search:</strong> the words you type into Board search are sent to our servers, together with your filters, to find matching tasks.</li>
+  <li><strong>ZIP code for nearby results:</strong> the ZIP code used on the board (one you type, your home ZIP, or one filled in from your approximate location) and the search radius are sent to our servers to find tasks near you.</li>
+</ul>
+<h3>Reports and blocks</h3>
+<ul>
+  <li><strong>Reports</strong> you file about a listing, photo, message, or user: what you reported (the target), the reason you pick, and any optional details you write.</li>
+  <li><strong>Blocks</strong> you set: the list of users you've blocked, so we can hide their content from you.</li>
+</ul>
 <h3>Location</h3>
-<p>If you allow location access, the app uses your device's location <strong>while you're using it</strong> to fill in your board ZIP code and to center the map on you. The app converts your location to a ZIP code on your device using the phone's built-in geocoder. When you browse the map, the map's center point (which can be close to your location) is sent to our servers to find nearby tasks. We use it only to answer that request and don't save it. We never collect location in the background. You can deny or revoke location access and enter a ZIP code instead.</p>
+<p>If you allow location access, the app uses your device's <strong>approximate location</strong> (not precise GPS location), and only <strong>while you're using the app</strong>, to fill in your board ZIP code and to center the map near you. Taskr asks only for approximate location. The app converts your approximate location to a ZIP code on your device using the phone's built-in geocoder, and that ZIP code is sent to our servers to find nearby tasks. When you browse the map, the map's center point (which can be close to you) is sent to our servers to find nearby tasks. We use it only to answer that request and don't save it. We never collect location in the background. You can deny or revoke location access and enter a ZIP code instead.</p>
 <h3>Payments</h3>
 <p>Card payments are collected directly by <strong>Stripe</strong> in Stripe's payment sheet. <strong>Taskr never receives or stores your full card number.</strong> Payouts to Taskrs go through <strong>Stripe Connect</strong>: Stripe collects your identity and bank details on its own hosted onboarding pages. We store Stripe reference IDs (for example payment and transfer IDs, and your Connect account ID and status), amounts, and payout status.</p>
 <h3>Technical information</h3>
 <ul>
   <li>Our servers and hosting provider process technical data needed to run and secure the Service, such as IP address, request times, and error logs. We use rate limits to prevent abuse of sign-in codes.</li>
-  <li>Third-party components in the app collect some technical data on their own: the <strong>Google Maps SDK</strong> (device and SDK metadata, IP address, a Maps-specific pseudonymous ID, map interaction events such as panning and zooming, and SDK crash data), and the <strong>Stripe SDK</strong> (device characteristics used for fraud prevention during payment). We don't use advertising SDKs or advertising IDs, and we don't add analytics or crash-reporting tools of our own.</li>
+  <li>Third-party components in the app collect some technical data on their own: the <strong>Google Maps SDK</strong> (device and SDK metadata, IP address, a Maps-specific pseudonymous ID, map interaction events such as panning and zooming, and SDK crash data; see {GOOGLE_PRIVACY}), and the <strong>Stripe SDK</strong> (device characteristics used for fraud prevention during payment). We don't use advertising SDKs or advertising IDs, and we don't add analytics or crash-reporting tools of our own.</li>
 </ul>
-<p><strong>What we don't collect:</strong> contacts, calendar, SMS or call logs, microphone or camera recordings (the app doesn't access the camera; photos come from your photo library when you choose them), health data, or background location.</p>
+<p><strong>What we don't collect:</strong> contacts, calendar, SMS or call logs, microphone or camera recordings (the app doesn't access the camera; photos come from your photo library when you choose them), health data, precise (GPS-level) location, or background location.</p>
 
 <h2>2. How we use information</h2>
 <ul>
   <li>Create and secure your account, and sign you in with one-time codes sent to your email.</li>
-  <li>Run the Service: show nearby tasks, let you post, book, chat, confirm, rate, and tip, and show the work address to the person who books.</li>
+  <li>Run the Service: show nearby tasks and Board search results, let you post, book, chat, confirm, rate, and tip, and show the work address to the person who books.</li>
   <li>Process payments, hold funds in escrow until both parties confirm, release payouts (90% of the labor price goes to the Taskr and 10% is Taskr's platform fee; tips go 100% to the Taskr), and handle disputes and refunds.</li>
-  <li>Prevent fraud, abuse, and security incidents, and enforce our <a href="../terms/">Terms</a> and <a href="../guidelines/">Community Guidelines</a> (including reviewing messages, photos, and confirmations when you open a dispute).</li>
-  <li>Send transactional emails such as sign-in codes and account or booking notices. We don't send marketing without your consent.</li>
+  <li>Prevent fraud, abuse, and security incidents, and enforce our <a href="../terms/">Terms</a> and <a href="../guidelines/">Community Guidelines</a> (including reviewing reports you file, applying blocks you set, and reviewing messages, photos, and confirmations when you open a dispute).</li>
+  <li>Email you one-time sign-in codes. Sign-in codes are the only emails the app sends.</li>
   <li>Comply with law, taxes, and accounting obligations.</li>
 </ul>
 <p>We <strong>do not sell</strong> your personal information and do not use it for targeted advertising.</p>
@@ -137,11 +148,11 @@ PRIVACY = f"""
   <li><strong>Other users:</strong> your display name, ratings, skills, and your listings (text, photos, neighborhood area) are visible to other Taskr users. Messages are visible to the other person in that booking. The work address is shared with the person who books your task.</li>
   <li><strong>Service providers</strong> that process data for us under contract:
     <ul>
-      <li><strong>Stripe</strong> (payments, escrow, Connect payouts, fraud prevention). We give Stripe your email and account ID when you set up payouts.</li>
-      <li><strong>Resend</strong> (sending email sign-in codes and account emails).</li>
-      <li><strong>Render</strong> (application hosting and database, USA).</li>
+      <li><strong>Stripe</strong> (payments and payouts, including escrow, Stripe Connect payouts, and fraud prevention). We give Stripe your email and account ID when you set up payouts.</li>
+      <li><strong>Resend</strong> (sends sign-in code emails).</li>
       <li><strong>Cloudflare R2</strong> (listing photo storage). Listing photos are served from a public web address so other users can see them.</li>
-      <li><strong>Google</strong> (map display through the Google Maps SDK, and on-device geocoding through Android).</li>
+      <li><strong>Render</strong> (application hosting and database, USA).</li>
+      <li><strong>Google Maps</strong> (a service provider we use to show maps and places in the app, through the Google Maps SDK; on Android, the phone's built-in geocoder that turns your approximate location into a ZIP code is also provided by Google). See {GOOGLE_PRIVACY}.</li>
     </ul>
   </li>
   <li><strong>Legal and safety:</strong> when required by law or to protect the rights, safety, and property of users, the public, or Taskr.</li>
@@ -149,15 +160,15 @@ PRIVACY = f"""
 </ul>
 
 <h2>4. Retention</h2>
-<p>We keep account data while your account is active. When you delete your account (Section 6), we delete or anonymize your personal information within 30 days. The exception is records we must keep for legal, tax, payment, fraud-prevention, or dispute purposes (for example booking and payment ledgers, typically up to 7 years). We keep those with your identity removed where possible. Sign-in code records expire within minutes and are periodically purged.</p>
+<p>We keep account data while your account is active. When you delete your account (Section 6), we delete or anonymize your personal information within 30 days. The exception is records we must keep for legal, tax, payment, fraud-prevention, or dispute purposes (for example booking and payment ledgers, typically up to 7 years). We keep those with your identity removed where possible. <strong>Blocks</strong> you set are deleted with your account. <strong>Reports</strong> you filed are kept with your identity removed, for safety, moderation, and legal reasons, on the same retention terms as other records. Reports other people filed about you may be kept for moderation. Sign-in codes expire within minutes.</p>
 
 <h2>5. Security</h2>
 <p>All data between the app and our servers, and between our servers and our providers, is encrypted in transit (HTTPS/TLS). Sign-in codes are stored only as salted hashes. Access to production systems is restricted. No system is 100% secure.</p>
 
 <h2>6. Your choices and rights</h2>
 <ul>
-  <li><strong>Delete your account:</strong> in the app, go to <strong>Profile &rarr; Delete account</strong>, or email {MAILTO} from the email address on your account. Full instructions, including what is deleted and what is kept, are at <a href="../delete-account/">taskrak.com/delete-account</a>.</li>
-  <li><strong>Access or correct:</strong> you can edit your display name, home ZIP, and skills in the app. For other requests, email {MAILTO}.</li>
+  <li><strong>Delete your account:</strong> in the app, go to <strong>Profile &rarr; Delete account</strong>, or email {MAILTO} from the email address on your account. Blocks you set are deleted with your account; reports you filed are kept with your identity removed (see Section 4). Full instructions, including what is deleted and what is kept, are at <a href="../delete-account/">taskrak.com/delete-account</a>.</li>
+  <li><strong>Access or correct:</strong> you can edit your display name, home ZIP, bio, and skills in the app, and unblock users in <strong>Profile</strong>. For other requests, email {MAILTO}.</li>
   <li><strong>Location:</strong> turn location access off at any time in your device settings.</li>
   <li>Depending on where you live, you may have extra rights (for example access, deletion, correction, portability, or appeal). We'll respond within the time required by law.</li>
 </ul>
@@ -169,7 +180,7 @@ PRIVACY = f"""
 <p>Taskr is offered in the United States and data is processed in the United States.</p>
 
 <h2>9. Changes</h2>
-<p>We'll post updates here and change the effective date. If changes are material, we'll notify you in the app or by email.</p>
+<p>We'll post updates here and change the effective date. If changes are material, we'll notify you in the app.</p>
 
 <h2>10. Contact</h2>
 <p>{MAILTO}<br>Arctic Autonomy Ventures LLC d/b/a Taskr<br>12110 Business Blvd STE 6 PMB 162<br>Eagle River, AK 99577, USA</p>
@@ -191,11 +202,15 @@ TERMS = f"""
 <h2>2. What Taskr Is</h2>
 <p>Taskr is an online <strong>marketplace</strong> that connects:</p>
 <ul>
-  <li><strong>Seekers</strong> &mdash; people who post fixed-price tasks (listings) for local help; and</li>
+  <li><strong>Seekers</strong> &mdash; people who post tasks (listings) for local help; and</li>
   <li><strong>Taskrs</strong> &mdash; people who book and perform those tasks.</li>
 </ul>
 <p>Taskr is a <strong>platform</strong>, not the employer, contractor, or agent of Seekers or Taskrs (except as needed to operate payments/escrow as described below). Seekers and Taskrs contract with each other for the task; Taskr provides tools, messaging, and payment facilitation.</p>
-<p>There is <strong>no bidding</strong>. Listings are posted at a <strong>fixed price</strong> set by the Seeker.</p>
+<p>Listings use one of two price types:</p>
+<ul>
+  <li><strong>Fixed price:</strong> the Seeker sets the price, and the task is booked at that price.</li>
+  <li><strong>Negotiable:</strong> the listing has no set price. The person booking the task enters their price and pays it when they book, and that money is held in escrow until the job is done (see Section 5). The Seeker does not accept or approve the price first.</li>
+</ul>
 
 <h2>3. Accounts and dual roles</h2>
 <ol>
@@ -208,9 +223,9 @@ TERMS = f"""
 
 <h2>4. Listings, booking, and address privacy</h2>
 <ol>
-  <li>Seekers may create listings with task details, price, skills/materials notes, and work location.</li>
+  <li>Seekers may create listings with task details, a fixed price or a negotiable price (see Section 2), skills/materials notes, and work location.</li>
   <li><strong>Street-level address privacy:</strong> Before a booking is confirmed, public board/map views may show approximate location (for example pins using coordinates) <strong>without</strong> revealing the full street address. Full work address is shared with the Taskr <strong>after</strong> a successful book, as needed to perform the task.</li>
-  <li>Taskrs book open listings; booking creates a booking record and starts payment/escrow as described below.</li>
+  <li>Taskrs book open listings; on a negotiable listing the Taskr enters their price when booking. Booking creates a booking record and starts payment/escrow as described below.</li>
   <li>If someone else books first, the listing may no longer be available.</li>
   <li>Seekers may cancel eligible <strong>draft/open</strong> listings per in-app rules before a successful book; after booking, cancellation and refunds follow Section 8 and our dispute process.</li>
 </ol>
@@ -219,7 +234,7 @@ TERMS = f"""
 <p>Payments are processed by <strong>Stripe</strong> (including Stripe Connect for Taskr payouts). By using paid features you also agree to applicable Stripe terms.</p>
 <h3>5.1 Escrow and split (platform fee)</h3>
 <ol>
-  <li>When a Seeker books (or pays for) a task, funds are typically authorized/captured into <strong>escrow</strong> held via Stripe until release conditions are met.</li>
+  <li>When a task is booked and paid for (at the fixed price, or at the price entered when booking a negotiable task), funds are typically authorized/captured into <strong>escrow</strong> held via Stripe until release conditions are met.</li>
   <li>On successful completion and release, the task price is split approximately:
     <ul>
       <li><strong>~90%</strong> to the Taskr (payout via Connect, subject to Stripe readiness and verification); and</li>
@@ -296,7 +311,7 @@ TERMS = f"""
 <p>These Terms are governed by the laws of the <strong>State of Alaska</strong>, excluding conflict-of-law rules. Courts located in the <strong>Municipality of Anchorage</strong>, Alaska, will have exclusive jurisdiction, unless applicable law requires otherwise.</p>
 
 <h2>16. Changes</h2>
-<p>We may update these Terms by posting a new version with an updated effective date. Continued use after the effective date means you accept the changes. Material changes may also be notified in-app or by email where appropriate.</p>
+<p>We may update these Terms by posting a new version with an updated effective date. Continued use after the effective date means you accept the changes. Material changes may also be announced in the app.</p>
 
 <h2>17. Contact</h2>
 <p>Questions about these Terms: {MAILTO} &middot; Arctic Autonomy Ventures LLC, 12110 Business Blvd STE 6 PMB 162, Eagle River, AK 99577.</p>
@@ -312,7 +327,7 @@ GUIDELINES = f"""
 <p>These guidelines are part of the <a href="../terms/">Taskr Terms of Service</a>.</p>
 
 <h2>Be a good neighbor</h2>
-<p>Taskr is for real local help at a clear fixed price. Treat people the way you&rsquo;d want to be treated on a task in your own community (including across Alaska&rsquo;s towns and cities).</p>
+<p>Taskr is for real local help at a clear price: a fixed price set by the Seeker, or, on a negotiable task, the price entered by the person who books it. Treat people the way you&rsquo;d want to be treated on a task in your own community (including across Alaska&rsquo;s towns and cities).</p>
 <p>You must be <strong>18+</strong> to use Taskr.</p>
 
 <h2>Do</h2>
@@ -328,8 +343,8 @@ GUIDELINES = f"""
 <ul>
   <li>Harass, threaten, discriminate, or scam anyone.</li>
   <li>Post illegal, unsafe, or deceptive tasks.</li>
-  <li>Bid, undercut off-app to dodge fees, or fake confirmations/tips/disputes.</li>
-  <li>Spam, scrape, or abuse sign-in codes or messaging.</li>
+  <li>Move payment off-app to dodge fees, or fake confirmations/tips/disputes.</li>
+  <li>Spam, scrape, or abuse sign-in codes, messaging, or reports.</li>
   <li>Upload others&rsquo; private photos or documents without permission.</li>
 </ul>
 
@@ -370,9 +385,10 @@ DELETE = f"""
 
 <h2>What we delete</h2>
 <ul>
-  <li>Your email address, display name, home ZIP code, and listed skills. Your profile is replaced with "Deleted user."</li>
+  <li>Your email address, display name, home ZIP code, bio, and listed skills. Your profile is replaced with "Deleted user."</li>
   <li>Your draft and open listings, which are cancelled, and their photos.</li>
-  <li>Your ability to sign in. Sign-in code records expire within minutes and are purged.</li>
+  <li>Blocks you set.</li>
+  <li>Your ability to sign in. Sign-in codes expire within minutes.</li>
 </ul>
 <p>If you set up payouts, your identity and bank details are held by Stripe, not Taskr. Stripe keeps its own records of your Connect account under <a href="https://stripe.com/privacy" rel="noopener">Stripe's privacy policy</a>.</p>
 
@@ -380,6 +396,7 @@ DELETE = f"""
 <ul>
   <li><strong>Booking, payment, and dispute records</strong> (for example amounts, platform fees, payouts, tips, confirmations, and dispute outcomes), which we must keep for legal, tax, accounting, fraud-prevention, and dispute purposes. We keep these for <strong>up to 7 years</strong>, with your identity removed where possible.</li>
   <li>Ratings and booking chat messages that are part of those records may stay attached to the booking, shown as from "Deleted user."</li>
+  <li><strong>Reports you filed</strong>, kept with your identity removed for safety, moderation, and legal reasons, on the same retention terms as the records above. Reports other people filed about you may be kept for moderation.</li>
   <li>Information we must keep to comply with a legal obligation or to resolve an open legal claim, only for as long as that requires.</li>
 </ul>
 
@@ -388,7 +405,8 @@ DELETE = f"""
 
 <h2>Delete some data without deleting your account</h2>
 <ul>
-  <li>Edit or clear your display name, home ZIP, and skills in <strong>Profile</strong>.</li>
+  <li>Edit or clear your display name, home ZIP, bio, and skills in <strong>Profile</strong>.</li>
+  <li>Unblock users in <strong>Profile</strong>.</li>
   <li>Cancel your draft or open listings in the app to remove them and their photos.</li>
   <li>Turn off location access in your device settings at any time.</li>
   <li>For anything else, email {MAILTO} from your account email.</li>
