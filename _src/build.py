@@ -227,6 +227,7 @@ TERMS = f"""
 </ul>
 <p>In each case, the request ends, no one is charged, and the listing goes back on the board.</p>
 <p><strong>2.5 Escrow and release.</strong> The Seeker&rsquo;s payment stays in escrow while the task is done. When both the Seeker and the Taskr confirm the job is complete, the payment is released <strong>48 hours</strong> later, unless either party opens a dispute during that window. If there&rsquo;s a problem, either party can open a dispute (Section 7).</p>
+<p>If one party confirms the job is complete and the other party doesn&rsquo;t confirm or open a dispute within <strong>48 hours</strong>, the job is treated as confirmed. The 48-hour dispute window then begins, and if no one opens a dispute, the payment is released to the Taskr. Either party can open a dispute during either window. If neither party confirms, the payment stays held until Taskr support resolves it.</p>
 <p><strong>2.6 Payout and platform fee.</strong> When the payment is released, the <strong>Taskr receives 90%</strong> of the task price through Stripe Connect, and Taskr keeps a <strong>10% platform fee</strong>. To receive payouts, the Taskr must complete Stripe Connect setup. Exact amounts are shown in the app before the Seeker pays.</p>
 <p><strong>2.7 Tips.</strong> After the payment is released, the Seeker can choose to tip the Taskr in the app. Tips are paid by the Seeker, go <strong>100% to the Taskr</strong> (Taskr takes no fee on tips), and are optional.</p>
 <p>Payments, escrow, payouts, and tips are processed by Stripe and are also covered by Section 5 and Stripe&rsquo;s terms.</p>
@@ -266,7 +267,7 @@ TERMS = f"""
 <h3>5.2 Dual confirmation and release</h3>
 <ol>
   <li>Completion requires <strong>dual confirmation</strong>: the Seeker and the Taskr both confirm the work is done.</li>
-  <li>The payment is released <strong>48 hours</strong> after both confirm, unless either party opens a dispute during that window (Section 7).</li>
+  <li>The payment is released <strong>48 hours</strong> after both confirm (or after the job is treated as confirmed under Section 2.5), unless either party opens a dispute during that window (Section 7).</li>
   <li>After release, escrow is paid out per the split above. We may adjust release timing with notice in the app.</li>
 </ol>
 <h3>5.3 Tips</h3>
