@@ -71,8 +71,8 @@ LANDING = f"""
 </section>
 <div class="card">
   <ul>
-    <li><strong>Seekers</strong> post local tasks with photos, a price, and a neighborhood. The street address stays private until someone books.</li>
-    <li><strong>Taskrs</strong> browse the board or map, book a task, and coordinate in a private booking chat.</li>
+    <li><strong>Seekers</strong> post local tasks with photos, a price, and a neighborhood. The street address stays private until the booking is confirmed.</li>
+    <li><strong>Taskrs</strong> browse the board or map, request a task, and coordinate in a private booking chat. The Seeker pays to confirm.</li>
     <li>Payments are held securely through Stripe until both sides confirm the job is done. Tips go 100% to the Taskr.</li>
   </ul>
   <p>One account can do both. Taskr is for people 18 and older in the United States.</p>
@@ -102,12 +102,12 @@ PRIVACY = f"""
 <ul>
   <li><strong>Email address.</strong> We use it to sign you in with one-time codes sent to your email, and to reply if you contact us.</li>
   <li><strong>Display name</strong> (shown to other users). If you don't set one, we create one from your email.</li>
-  <li><strong>Home ZIP code</strong> (optional), a short <strong>bio</strong> (optional), and <strong>skills</strong> you choose to list.</li>
+  <li><strong>Home ZIP code</strong> (optional), and <strong>skills</strong> you choose to list.</li>
 </ul>
 <h3>Task, booking, and community content</h3>
 <ul>
-  <li><strong>Listings:</strong> title, description, labor price or "negotiate," materials mode and budget, <strong>photos you upload</strong> (up to 10 per listing), and the <strong>work address</strong> (street, city, state, ZIP). The public board and map show only a neighborhood-level area (the ZIP-code area) and never your street address. The street address is shown only to the person who books the task.</li>
-  <li><strong>Bookings:</strong> status, agreed price, platform fee, payout amount, confirmations, disputes and the reasons you give, and tips.</li>
+  <li><strong>Listings:</strong> title, description, labor price or "negotiate," materials mode and budget, <strong>photos you upload</strong> (up to 10 per listing), and the <strong>work address</strong> (street, city, state, ZIP). The public board and map show only a neighborhood-level area (the ZIP-code area) and never your street address. The street address is shown only to the Taskr, after the Seeker pays to confirm the booking.</li>
+  <li><strong>Requests and bookings:</strong> requests (including the price a Taskr includes on a negotiable task), status (such as awaiting payment, withdrawn, declined, expired, confirmed, completed, released), the price the Seeker paid, platform fee, payout amount, confirmations, disputes and the reasons you give, and tips.</li>
   <li><strong>Messages</strong> you send in a booking's chat thread.</li>
   <li><strong>Ratings</strong> (1&ndash;5 stars and an optional comment) that you give and receive.</li>
 </ul>
@@ -135,17 +135,17 @@ PRIVACY = f"""
 <h2>2. How we use information</h2>
 <ul>
   <li>Create and secure your account, and sign you in with one-time codes sent to your email.</li>
-  <li>Run the Service: show nearby tasks and Board search results, let you post, book, chat, confirm, rate, and tip, and show the work address to the person who books.</li>
-  <li>Process payments, hold funds in escrow until both parties confirm, release payouts (90% of the labor price goes to the Taskr and 10% is Taskr's platform fee; tips go 100% to the Taskr), and handle disputes and refunds.</li>
+  <li>Run the Service: show nearby tasks and Board search results, let you post, request, pay to confirm, chat, confirm, rate, and tip, show the Seeker a message in the app when a Taskr requests their task, and show the work address to the Taskr after the Seeker pays.</li>
+  <li>Process the Seeker&rsquo;s payment when they pay to confirm, hold funds in escrow until both parties confirm the job is done, release payouts 48 hours later unless a dispute is opened (90% of the labor price goes to the Taskr and 10% is Taskr's platform fee; tips go 100% to the Taskr), and handle disputes and refunds.</li>
   <li>Prevent fraud, abuse, and security incidents, and enforce our <a href="../terms/">Terms</a> and <a href="../guidelines/">Community Guidelines</a> (including reviewing reports you file, applying blocks you set, and reviewing messages, photos, and confirmations when you open a dispute).</li>
-  <li>Email you one-time sign-in codes. Sign-in codes are the only emails the app sends.</li>
+  <li>Email you one-time sign-in codes. Sign-in codes are the only emails the app sends; request and pay-to-confirm notices appear only in the app.</li>
   <li>Comply with law, taxes, and accounting obligations.</li>
 </ul>
 <p>We <strong>do not sell</strong> your personal information and do not use it for targeted advertising.</p>
 
 <h2>3. How we share information</h2>
 <ul>
-  <li><strong>Other users:</strong> your display name, ratings, skills, and your listings (text, photos, neighborhood area) are visible to other Taskr users. Messages are visible to the other person in that booking. The work address is shared with the person who books your task.</li>
+  <li><strong>Other users:</strong> your display name, ratings, skills, and your listings (text, photos, neighborhood area) are visible to other Taskr users. Messages are visible to the other person in that booking. The work address is shared with the Taskr after you pay to confirm the booking.</li>
   <li><strong>Service providers</strong> that process data for us under contract:
     <ul>
       <li><strong>Stripe</strong> (payments and payouts, including escrow, Stripe Connect payouts, and fraud prevention). We give Stripe your email and account ID when you set up payouts.</li>
@@ -168,7 +168,7 @@ PRIVACY = f"""
 <h2>6. Your choices and rights</h2>
 <ul>
   <li><strong>Delete your account:</strong> in the app, go to <strong>Profile &rarr; Delete account</strong>, or email {MAILTO} from the email address on your account. Blocks you set are deleted with your account; reports you filed are kept with your identity removed (see Section 4). Full instructions, including what is deleted and what is kept, are at <a href="../delete-account/">taskrak.com/delete-account</a>.</li>
-  <li><strong>Access or correct:</strong> you can edit your display name, home ZIP, bio, and skills in the app, and unblock users in <strong>Profile</strong>. For other requests, email {MAILTO}.</li>
+  <li><strong>Access or correct:</strong> you can edit your display name, home ZIP, and skills in the app, and unblock users in <strong>Profile</strong>. For other requests, email {MAILTO}.</li>
   <li><strong>Location:</strong> turn location access off at any time in your device settings.</li>
   <li>Depending on where you live, you may have extra rights (for example access, deletion, correction, portability, or appeal). We'll respond within the time required by law.</li>
 </ul>
@@ -199,19 +199,37 @@ TERMS = f"""
 <p>By creating an account, accessing, or using the Taskr mobile or web application (the "<strong>Service</strong>"), you agree to these Terms of Service (the "<strong>Terms</strong>") and our <a href="../privacy/">Privacy Policy</a>. If you do not agree, do not use Taskr.</p>
 <p>You must be at least <strong>18</strong> years old and able to form a binding contract under applicable U.S. and Alaska law.</p>
 
-<h2>2. What Taskr Is</h2>
-<p>Taskr is an online <strong>marketplace</strong> that connects:</p>
+<h2>2. What Taskr Is, and How Pricing, Booking, and Payment Work</h2>
+<p>Taskr is an online marketplace that connects:</p>
 <ul>
-  <li><strong>Seekers</strong> &mdash; people who post tasks (listings) for local help; and</li>
-  <li><strong>Taskrs</strong> &mdash; people who book and perform those tasks.</li>
+  <li><strong>Seekers</strong>: people who post tasks (listings) they need done; and</li>
+  <li><strong>Taskrs</strong>: people who request and perform those tasks.</li>
 </ul>
-<p>Taskr is a <strong>platform</strong>, not the employer, contractor, or agent of Seekers or Taskrs (except as needed to operate payments/escrow as described below). Seekers and Taskrs contract with each other for the task; Taskr provides tools, messaging, and payment facilitation.</p>
-<p>Listings use one of two price types:</p>
+<p>Taskr is a platform. It is not the employer, contractor, or agent of Seekers or Taskrs, except as needed to process payments and hold funds in escrow as described in these Terms. Seekers and Taskrs contract with each other for the task. Taskr provides the tools, messaging, and payment processing.</p>
+<p><strong>2.1 Price types.</strong> Every listing uses one of two price types:</p>
 <ul>
-  <li><strong>Fixed price:</strong> the Seeker sets the price, and the task is booked at that price.</li>
-  <li><strong>Negotiable:</strong> the listing has no set price. The person booking the task enters their price when they book. The Seeker does not accept or approve the price first.</li>
+  <li><strong>Fixed price:</strong> the Seeker sets the price. A Taskr can request the task only at that price and can&rsquo;t propose a different one.</li>
+  <li><strong>Negotiable:</strong> the Seeker leaves the price open. A Taskr who requests the task includes their price with the request.</li>
 </ul>
-<p>For both price types, payment is charged when the task is booked and held in escrow until the job is confirmed done (see Section 5).</p>
+<p>There is no open bidding. Each request is for one task at one price.</p>
+<p><strong>2.2 Requesting a task.</strong> A Taskr requests a task by tapping <strong>Book</strong>. The booking then shows as <strong>awaiting payment</strong>, and the listing is held for that Taskr while the request is pending. The work address stays hidden. We send the Seeker a message in the app asking them to pay to confirm. Taskrs never pay to book a task. Before requesting a task, a Taskr must finish payout setup with Stripe Connect, because the Seeker&rsquo;s payment goes to the Taskr&rsquo;s payout account.</p>
+<p><strong>2.3 The Seeker confirms by paying.</strong> The Seeker always pays for the task. To confirm, the Seeker pays the requested price in the app through Stripe. On a negotiable task, paying the Taskr&rsquo;s price means the Seeker agrees to that price. When payment succeeds:</p>
+<ul>
+  <li>the booking is confirmed;</li>
+  <li>the payment is held in escrow; and</li>
+  <li>the work address is shared with the Taskr.</li>
+</ul>
+<p><strong>2.4 Withdrawing, declining, and expiry.</strong> Until the Seeker pays:</p>
+<ul>
+  <li>the <strong>Taskr</strong> can withdraw the request at any time;</li>
+  <li>the <strong>Seeker</strong> can decline the request; and</li>
+  <li>if the Seeker doesn&rsquo;t pay within <strong>24 hours</strong>, the request <strong>expires</strong>.</li>
+</ul>
+<p>In each case, the request ends, no one is charged, and the listing goes back on the board.</p>
+<p><strong>2.5 Escrow and release.</strong> The Seeker&rsquo;s payment stays in escrow while the task is done. When both the Seeker and the Taskr confirm the job is complete, the payment is released <strong>48 hours</strong> later, unless either party opens a dispute during that window. If there&rsquo;s a problem, either party can open a dispute (Section 7).</p>
+<p><strong>2.6 Payout and platform fee.</strong> When the payment is released, the <strong>Taskr receives 90%</strong> of the task price through Stripe Connect, and Taskr keeps a <strong>10% platform fee</strong>. To receive payouts, the Taskr must complete Stripe Connect setup. Exact amounts are shown in the app before the Seeker pays.</p>
+<p><strong>2.7 Tips.</strong> After the payment is released, the Seeker can choose to tip the Taskr in the app. Tips are paid by the Seeker, go <strong>100% to the Taskr</strong> (Taskr takes no fee on tips), and are optional.</p>
+<p>Payments, escrow, payouts, and tips are processed by Stripe and are also covered by Section 5 and Stripe&rsquo;s terms.</p>
 
 <h2>3. Accounts and dual roles</h2>
 <ol>
@@ -225,30 +243,31 @@ TERMS = f"""
 <h2>4. Listings, booking, and address privacy</h2>
 <ol>
   <li>Seekers may create listings with task details, a fixed price or a negotiable price (see Section 2), skills/materials notes, and work location.</li>
-  <li><strong>Street-level address privacy:</strong> Before a booking is confirmed, public board/map views may show approximate location (for example pins using coordinates) <strong>without</strong> revealing the full street address. Full work address is shared with the Taskr <strong>after</strong> a successful book, as needed to perform the task.</li>
-  <li>Taskrs book open listings; on a negotiable listing the Taskr enters their price when booking. Booking creates a booking record and starts payment/escrow as described below.</li>
-  <li>If someone else books first, the listing may no longer be available.</li>
-  <li>Seekers may cancel eligible <strong>draft/open</strong> listings per in-app rules before a successful book; after booking, cancellation and refunds follow Section 8 and our dispute process.</li>
+  <li><strong>Street-level address privacy:</strong> Before a booking is confirmed, public board/map views may show approximate location (for example pins using coordinates) <strong>without</strong> revealing the full street address. Full work address is shared with the Taskr <strong>after</strong> the Seeker pays and the booking is confirmed, as needed to perform the task.</li>
+  <li>Taskrs request open listings (see Section 2). A request holds the listing until the Seeker pays, declines, or the request is withdrawn or expires. Taskrs never pay to request a task. Escrow starts when the Seeker pays.</li>
+  <li>While another Taskr&rsquo;s request is pending, the listing isn&rsquo;t available. It returns to the board if that request is withdrawn, declined, or expires.</li>
+  <li>Seekers may cancel eligible <strong>draft/open</strong> listings per in-app rules before a booking is confirmed. If a request is pending, decline it first. After a booking is confirmed, cancellation and refunds follow Section 8 and our dispute process.</li>
 </ol>
 
 <h2>5. Payments, escrow, platform fee, and tips</h2>
 <p>Payments are processed by <strong>Stripe</strong> (including Stripe Connect for Taskr payouts). By using paid features you also agree to applicable Stripe terms.</p>
 <h3>5.1 Escrow and split (platform fee)</h3>
 <ol>
-  <li>Payment is charged when a task is booked (at the fixed price, or at the price entered when booking a negotiable task) and held in <strong>escrow</strong> via Stripe until the job is confirmed done or other release conditions are met.</li>
-  <li>On successful completion and release, the task price is split approximately:
+  <li>The Seeker&rsquo;s payment is charged when the Seeker pays to confirm a request (Section 2.3) and is held in <strong>escrow</strong> via Stripe until it is released (Section 5.2) or refunded.</li>
+  <li>On release, the task price is split:
     <ul>
-      <li><strong>~90%</strong> to the Taskr (payout via Connect, subject to Stripe readiness and verification); and</li>
-      <li><strong>~10%</strong> platform fee to Arctic Autonomy Ventures LLC d/b/a Taskr.</li>
+      <li><strong>90%</strong> to the Taskr (payout via Stripe Connect); and</li>
+      <li>a <strong>10%</strong> platform fee to Arctic Autonomy Ventures LLC d/b/a Taskr.</li>
     </ul>
+    Amounts are rounded to the cent and shown in the app before the Seeker pays.
   </li>
   <li>Exact amounts, timing, and currency are shown in-app. Taxes (if any) are your responsibility unless we state otherwise in writing.</li>
 </ol>
 <h3>5.2 Dual confirmation and release</h3>
 <ol>
-  <li>Completion generally requires <strong>dual confirmation</strong> (Seeker and Taskr confirm the work is done), or other release rules we publish in-app.</li>
-  <li>After release, escrow is paid out per the split above.</li>
-  <li>Auto-release or time-based release may apply if described in-app; we may adjust those rules with notice.</li>
+  <li>Completion requires <strong>dual confirmation</strong>: the Seeker and the Taskr both confirm the work is done.</li>
+  <li>The payment is released <strong>48 hours</strong> after both confirm, unless either party opens a dispute during that window (Section 7).</li>
+  <li>After release, escrow is paid out per the split above. We may adjust release timing with notice in the app.</li>
 </ol>
 <h3>5.3 Tips</h3>
 <ol>
@@ -257,7 +276,7 @@ TERMS = f"""
   <li>Tips are voluntary and generally non-refundable once paid, except as required by law or a successful dispute determination.</li>
 </ol>
 <h3>5.4 Failed or incomplete payouts</h3>
-<p>If a Taskr&rsquo;s Connect account cannot receive transfers (for example payouts not ready), payment may fail or be delayed. We may show an in-app error and ask the Taskr to finish onboarding.</p>
+<p>Taskrs must finish Stripe Connect payout setup before requesting a task. If a Taskr&rsquo;s Connect account later can&rsquo;t receive transfers, the Taskr&rsquo;s <strong>payout</strong> may be delayed until onboarding is finished; the Seeker&rsquo;s payment stays in escrow meanwhile. We may show an in-app message asking the Taskr to finish onboarding.</p>
 
 <h2>6. Ratings, messaging, and conduct</h2>
 <ol>
@@ -276,8 +295,9 @@ TERMS = f"""
 
 <h2>8. Cancellations and refunds</h2>
 <ol>
-  <li><strong>Pre-book:</strong> Seekers may cancel eligible open/draft listings per in-app rules.</li>
-  <li><strong>Post-book / mid-task:</strong> Cancellations, refunds, and payouts depend on status (authorized, captured, confirmed, released) and any dispute outcome.</li>
+  <li><strong>Before a request:</strong> Seekers may cancel eligible open/draft listings per in-app rules.</li>
+  <li><strong>Pending requests (awaiting payment):</strong> a Taskr can withdraw and a Seeker can decline a request before payment, and unpaid requests expire after <strong>24 hours</strong>. No one is charged and the listing reopens.</li>
+  <li><strong>After the Seeker pays:</strong> cancellations, refunds, and payouts depend on the booking&rsquo;s status as shown in the app (confirmed: paid and in escrow; completed; released; disputed; refunded) and any dispute outcome. A booking that is still awaiting payment follows item 2.</li>
   <li>We do not guarantee refunds in every case. Chargebacks filed in bad faith may lead to account suspension.</li>
 </ol>
 
@@ -328,7 +348,7 @@ GUIDELINES = f"""
 <p>These guidelines are part of the <a href="../terms/">Taskr Terms of Service</a>.</p>
 
 <h2>Be a good neighbor</h2>
-<p>Taskr is for real local help at a clear price: a fixed price set by the Seeker, or, on a negotiable task, the price entered by the person who books it. Treat people the way you&rsquo;d want to be treated on a task in your own community (including across Alaska&rsquo;s towns and cities).</p>
+<p>Taskr is for real local help at a clear price: a fixed price set by the Seeker, or, on a negotiable task, the price a Taskr includes with their request, which the Seeker accepts by paying. Treat people the way you&rsquo;d want to be treated on a task in your own community (including across Alaska&rsquo;s towns and cities).</p>
 <p>You must be <strong>18+</strong> to use Taskr.</p>
 
 <h2>Do</h2>
@@ -381,12 +401,12 @@ DELETE = f"""
 </div>
 
 <div class="card callout">
-<p><strong>Before you delete:</strong> finish or cancel any active bookings first. We can't delete an account while a booking is booked, in progress, waiting for confirmation, or in dispute, or while payment is held in escrow. If you're a Taskr, make sure any pending payout has been paid out.</p>
+<p><strong>Before you delete:</strong> withdraw or decline any pending requests, and finish or cancel any active bookings first. We can't delete an account while a booking is awaiting payment (a pending request), booked, in progress, waiting for confirmation, or in dispute, or while payment is held in escrow. If you're a Taskr, make sure any pending payout has been paid out.</p>
 </div>
 
 <h2>What we delete</h2>
 <ul>
-  <li>Your email address, display name, home ZIP code, bio, and listed skills. Your profile is replaced with "Deleted user."</li>
+  <li>Your email address, display name, home ZIP code, and listed skills. Your profile is replaced with "Deleted user."</li>
   <li>Your draft and open listings, which are cancelled, and their photos.</li>
   <li>Blocks you set.</li>
   <li>Your ability to sign in. Sign-in codes expire within minutes.</li>
@@ -406,7 +426,7 @@ DELETE = f"""
 
 <h2>Delete some data without deleting your account</h2>
 <ul>
-  <li>Edit or clear your display name, home ZIP, bio, and skills in <strong>Profile</strong>.</li>
+  <li>Edit or clear your display name, home ZIP, and skills in <strong>Profile</strong>.</li>
   <li>Unblock users in <strong>Profile</strong>.</li>
   <li>Cancel your draft or open listings in the app to remove them and their photos.</li>
   <li>Turn off location access in your device settings at any time.</li>
