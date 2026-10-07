@@ -15,7 +15,7 @@ def page(slug, title, desc, body, prefix):
         f'<a href="{prefix}{s}/"' + (' aria-current="page"' if s == slug else "") + f">{label}</a>"
         for s, label in NAV)
     canon = "https://taskrak.com/" + (f"{slug}" if slug not in ("", "404") else "")
-    full_title = f"{title} | Taskr" if slug else "Taskr: local help, fixed prices"
+    full_title = f"{title} | Taskr" if slug else "Taskr: local task marketplace"
     return f"""<!doctype html>
 <html lang="en">
 <head>
