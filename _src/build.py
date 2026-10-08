@@ -365,6 +365,7 @@ GUIDELINES = f"""
 <ul>
   <li>Harass, threaten, discriminate, or scam anyone.</li>
   <li>Post illegal, unsafe, or deceptive tasks.</li>
+  <li>Post sexual, nude, or explicit content.</li>
   <li>Move payment off-app to dodge fees, or fake confirmations/tips/disputes.</li>
   <li>Spam, scrape, or abuse sign-in codes, messaging, or reports.</li>
   <li>Upload others&rsquo; private photos or documents without permission.</li>
