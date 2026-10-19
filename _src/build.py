@@ -4,6 +4,8 @@ import os
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 EMAIL = "arcticautonomy@gmail.com"
 MAILTO = f'<a href="mailto:{EMAIL}">{EMAIL}</a>'
+SUPPORT = "support@taskrak.com"
+SUPPORT_MAILTO = f'<a href="mailto:{SUPPORT}">{SUPPORT}</a>'
 GOOGLE_PRIVACY = '<a href="https://policies.google.com/privacy" rel="noopener">Google&rsquo;s Privacy Policy</a>'
 ADDR = "12110 Business Blvd STE 6 PMB 162, Eagle River, AK 99577, USA"
 EFFECTIVE = "October 7, 2026"
@@ -48,7 +50,7 @@ def page(slug, title, desc, body, prefix):
   <div class="wrap">
     <nav aria-label="Footer"><a href="{prefix}privacy/">Privacy Policy</a><a href="{prefix}terms/">Terms of Service</a><a href="{prefix}guidelines/">Community Guidelines</a><a href="{prefix}delete-account/">Delete your account</a></nav>
     <p>&copy; 2026 Arctic Autonomy Ventures LLC d/b/a Taskr &middot; Alaska, USA</p>
-    <p>Contact: {MAILTO}</p>
+    <p>Help &amp; support: {SUPPORT_MAILTO} &middot; We reply within 24 hours.</p>
   </div>
 </footer>
 </body>
@@ -82,7 +84,7 @@ LANDING = f"""
   <a href="terms/"><strong>Terms of Service</strong><span>The rules for using Taskr</span></a>
   <a href="delete-account/"><strong>Delete your account</strong><span>How to delete your Taskr account and data</span></a>
 </div>
-<p>Questions? Email {MAILTO}.</p>
+<p>Need help with a task, a payment, or your account? Email {SUPPORT_MAILTO}. We reply within 24 hours.</p>
 <p class="meta">Taskr is operated by Arctic Autonomy Ventures LLC d/b/a Taskr, an Alaska limited liability company.</p>
 """
 
