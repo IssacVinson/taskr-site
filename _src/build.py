@@ -8,7 +8,7 @@ SUPPORT = "support@taskrak.com"
 SUPPORT_MAILTO = f'<a href="mailto:{SUPPORT}">{SUPPORT}</a>'
 GOOGLE_PRIVACY = '<a href="https://policies.google.com/privacy" rel="noopener">Google&rsquo;s Privacy Policy</a>'
 ADDR = "12110 Business Blvd STE 6 PMB 162, Eagle River, AK 99577, USA"
-EFFECTIVE = "October 7, 2026"
+EFFECTIVE = "October 21, 2026"
 
 NAV = [("privacy", "Privacy"), ("terms", "Terms"), ("guidelines", "Guidelines"), ("delete-account", "Delete account")]
 
