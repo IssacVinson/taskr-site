@@ -95,6 +95,7 @@ PRIVACY = f"""
   <p><strong>Effective date:</strong> {EFFECTIVE}</p>
   <p><strong>Operator:</strong> Arctic Autonomy Ventures LLC d/b/a Taskr ("Taskr," "we," "us"), {ADDR}</p>
   <p><strong>Contact:</strong> {MAILTO}</p>
+  <p><strong>Support:</strong> {SUPPORT_MAILTO}</p>
 </div>
 
 <p>This policy explains what personal information the Taskr mobile app and service (the "Service") collect, how we use and share it, and the choices you have. Taskr is a marketplace where people ("Seekers") post local one-off tasks and other people ("Taskrs") book and complete them. One account can do both.</p>
@@ -102,14 +103,14 @@ PRIVACY = f"""
 <h2>1. Information we collect</h2>
 <h3>Account information you provide</h3>
 <ul>
-  <li><strong>Email address.</strong> We use it to sign you in with one-time codes sent to your email, and to reply if you contact us.</li>
+  <li><strong>Email address.</strong> We use it to sign you in with one-time codes sent to your email, to send you emails about your bookings, and to reply if you contact us.</li>
   <li><strong>Display name</strong> (shown to other users). If you don't set one, we create one from your email.</li>
   <li><strong>Home ZIP code</strong> (optional), and <strong>skills</strong> you choose to list.</li>
 </ul>
 <h3>Task, booking, and community content</h3>
 <ul>
   <li><strong>Listings:</strong> title, description, labor price or "negotiate," materials mode and budget, <strong>photos you upload</strong> (up to 8 per listing), and the <strong>work address</strong> (street, city, state, ZIP). The public board and map show only a neighborhood-level area (the ZIP-code area) and never your street address. The street address is shown only to the Taskr, after the Seeker pays to confirm the booking.</li>
-  <li><strong>Requests and bookings:</strong> requests (including the price a Taskr includes on a negotiable task), status (such as awaiting payment, withdrawn, declined, expired, confirmed, completed, released), the price the Seeker paid, platform fee, payout amount, confirmations, disputes and the reasons you give, and tips.</li>
+  <li><strong>Requests and bookings:</strong> requests (including the price a Taskr includes on a negotiable task), the scheduled start time, status (such as awaiting payment, withdrawn, declined, expired, confirmed, completed, released, cancelled, refunded), the price the Seeker paid, platform fee, payout amount, confirmations, cancellations (who cancelled and when), late cancellation fees, &ldquo;Taskr didn&rsquo;t show&rdquo; reports, disputes and the reasons you give, and tips. We use a Taskr&rsquo;s cancellations and no-shows to flag accounts for review.</li>
   <li><strong>Messages</strong> you send in a booking's chat thread.</li>
   <li><strong>Ratings</strong> (1&ndash;5 stars and an optional comment) that you give and receive.</li>
 </ul>
@@ -138,9 +139,9 @@ PRIVACY = f"""
 <ul>
   <li>Create and secure your account, and sign you in with one-time codes sent to your email.</li>
   <li>Run the Service: show nearby tasks and Board search results, let you post, request, pay to confirm, chat, confirm, rate, and tip, show the Seeker a message in the app when a Taskr requests their task, and show the work address to the Taskr after the Seeker pays.</li>
-  <li>Process the Seeker&rsquo;s payment when they pay to confirm, hold funds in escrow until both parties confirm the job is done, release payouts 48 hours later unless a dispute is opened (90% of the labor price goes to the Taskr and 10% is Taskr's platform fee; tips go 100% to the Taskr), and handle disputes and refunds.</li>
+  <li>Process the Seeker&rsquo;s payment when they pay to confirm, hold funds in escrow until both parties confirm the job is done, release payouts 48 hours later unless a dispute is opened (90% of the labor price goes to the Taskr and 10% is Taskr's platform fee; tips go 100% to the Taskr), handle disputes and refunds, issue refunds and late cancellation fees for cancellations and no-shows, and freeze held funds after a chargeback or a ban.</li>
   <li>Prevent fraud, abuse, and security incidents, and enforce our <a href="../terms/">Terms</a> and <a href="../guidelines/">Community Guidelines</a> (including reviewing reports you file, applying blocks you set, and reviewing messages, photos, and confirmations when you open a dispute).</li>
-  <li>Email you one-time sign-in codes. Sign-in codes are the only emails the app sends; request and pay-to-confirm notices appear only in the app.</li>
+  <li>Email you one-time sign-in codes and messages about your bookings: a new request on your task, a confirmed booking, a chat message you haven't read for a while, a request about to expire, a reminder to confirm the job is done, a dispute, a cancellation, or a refund. Each booking email links back into the app. If your account is banned, we email you the reason and how to appeal.</li>
   <li>Comply with law, taxes, and accounting obligations.</li>
 </ul>
 <p>We <strong>do not sell</strong> your personal information and do not use it for targeted advertising.</p>
@@ -151,7 +152,7 @@ PRIVACY = f"""
   <li><strong>Service providers</strong> that process data for us under contract:
     <ul>
       <li><strong>Stripe</strong> (payments and payouts, including escrow, Stripe Connect payouts, and fraud prevention). We give Stripe your email and account ID when you set up payouts.</li>
-      <li><strong>Resend</strong> (sends sign-in code emails).</li>
+      <li><strong>Resend</strong> (sends sign-in code and booking emails).</li>
       <li><strong>Cloudflare R2</strong> (listing photo storage). Listing photos are served from a public web address so other users can see them.</li>
       <li><strong>Render</strong> (application hosting and database, USA).</li>
       <li><strong>Google Maps</strong> (a service provider we use to show maps and places in the app, through the Google Maps SDK; on Android, the phone's built-in geocoder that turns your approximate location into a ZIP code is also provided by Google). See {GOOGLE_PRIVACY}.</li>
@@ -162,21 +163,21 @@ PRIVACY = f"""
 </ul>
 
 <h2>4. Retention</h2>
-<p>We keep account data while your account is active. When you delete your account (Section 6), we delete or anonymize your personal information within 30 days. The exception is records we must keep for legal, tax, payment, fraud-prevention, or dispute purposes (for example booking and payment ledgers, typically up to 7 years). We keep those with your identity removed where possible. <strong>Blocks</strong> you set are deleted with your account. <strong>Reports</strong> you filed are kept with your identity removed, for safety, moderation, and legal reasons, on the same retention terms as other records. Reports other people filed about you may be kept for moderation. Sign-in codes expire after 10 minutes, and any you have are deleted with your account.</p>
+<p>We keep account data while your account is active. When you delete your account (Section 6), your personal information (including your name, email address, photos, and addresses) is deleted right away and removed from our backups within 30 days, and you can no longer sign in. We keep payment and booking records (for example booking and payment ledgers, typically up to 7 years) with your identity removed, for legal, tax, and fraud-prevention reasons. Bookings you have when you delete are handled under <a href="../terms/">Terms Section 8</a>: a booking where work hasn't started is cancelled and the Seeker gets a full refund; a booking that has started but isn't confirmed stays frozen until support decides it; and a finished, confirmed job is released to the Taskr as usual. <strong>Blocks</strong> you set are deleted with your account. <strong>Reports</strong> you filed are kept with your identity removed, for safety, moderation, and legal reasons, on the same retention terms as other records. Reports other people filed about you may be kept for moderation. Sign-in codes expire after 10 minutes, and any you have are deleted with your account.</p>
 
 <h2>5. Security</h2>
 <p>All data between the app and our servers, and between our servers and our providers, is encrypted in transit (HTTPS/TLS). Sign-in codes are stored only as salted hashes. Access to production systems is restricted. No system is 100% secure.</p>
 
 <h2>6. Your choices and rights</h2>
 <ul>
-  <li><strong>Delete your account:</strong> in the app, go to <strong>Profile &rarr; Delete account</strong>, or email {MAILTO} from the email address on your account. Blocks you set are deleted with your account; reports you filed are kept with your identity removed (see Section 4). Full instructions, including what is deleted and what is kept, are at <a href="../delete-account/">taskrak.com/delete-account</a>.</li>
-  <li><strong>Access or correct:</strong> you can edit your display name, home ZIP, and skills in the app, and unblock users in <strong>Profile</strong>. For other requests, email {MAILTO}.</li>
+  <li><strong>Delete your account:</strong> in the app, go to <strong>Profile &rarr; Delete account</strong>, or email {SUPPORT_MAILTO} from the email address on your account. Deletion always works, even if your account is banned or you have bookings in progress. Section 4 and <a href="../terms/">Terms Section 8</a> explain what happens to your bookings. Blocks you set are deleted with your account; reports you filed are kept with your identity removed (see Section 4). Full instructions, including what is deleted and what is kept, are at <a href="../delete-account/">taskrak.com/delete-account</a>.</li>
+  <li><strong>Access or correct:</strong> you can edit your display name, home ZIP, and skills in the app, and unblock users in <strong>Profile</strong>. For other requests, email {SUPPORT_MAILTO}.</li>
   <li><strong>Location:</strong> turn location access off at any time in your device settings.</li>
   <li>Depending on where you live, you may have extra rights (for example access, deletion, correction, portability, or appeal). We'll respond within the time required by law.</li>
 </ul>
 
 <h2>7. Children</h2>
-<p>Taskr is only for people <strong>18 and older</strong>. We don't knowingly collect information from anyone under 18. If you believe a minor has an account, contact {MAILTO} and we'll delete it.</p>
+<p>Taskr is only for people <strong>18 and older</strong>. We don't knowingly collect information from anyone under 18. If you believe a minor has an account, contact {SUPPORT_MAILTO} and we'll delete it.</p>
 
 <h2>8. Location of processing</h2>
 <p>Taskr is offered in the United States and data is processed in the United States.</p>
@@ -186,6 +187,7 @@ PRIVACY = f"""
 
 <h2>10. Contact</h2>
 <p>{MAILTO}<br>Arctic Autonomy Ventures LLC d/b/a Taskr<br>12110 Business Blvd STE 6 PMB 162<br>Eagle River, AK 99577, USA</p>
+<p>Support: {SUPPORT_MAILTO}</p>
 """
 
 # ---------------------------------------------------------------- terms
@@ -195,6 +197,7 @@ TERMS = f"""
   <p><strong>Effective date:</strong> {EFFECTIVE}</p>
   <p><strong>Operator:</strong> Arctic Autonomy Ventures LLC d/b/a <strong>Taskr</strong> (an Alaska limited liability company)</p>
   <p><strong>Contact:</strong> {MAILTO} &middot; 12110 Business Blvd STE 6 PMB 162, Eagle River, AK 99577</p>
+  <p><strong>Support:</strong> {SUPPORT_MAILTO}</p>
 </div>
 
 <h2>1. Agreement</h2>
@@ -214,11 +217,12 @@ TERMS = f"""
   <li><strong>Negotiable:</strong> the Seeker leaves the price open. A Taskr who requests the task includes their price with the request.</li>
 </ul>
 <p>There is no open bidding. Each request is for one task at one price.</p>
-<p><strong>2.2 Requesting a task.</strong> A Taskr requests a task by tapping <strong>Book</strong>. The booking then shows as <strong>awaiting payment</strong>, and the listing is held for that Taskr while the request is pending. The work address stays hidden. We send the Seeker a message in the app asking them to pay to confirm. Taskrs never pay to book a task. Before requesting a task, a Taskr must finish payout setup with Stripe Connect, because the Seeker&rsquo;s payment goes to the Taskr&rsquo;s payout account.</p>
+<p><strong>2.2 Requesting a task.</strong> A Taskr requests a task by tapping <strong>Book</strong>. With the request, the Taskr proposes a date and start time for the job. The booking then shows as <strong>awaiting payment</strong>, and the listing is held for that Taskr while the request is pending. The work address stays hidden. We let the Seeker know in the app and by email, and ask them to pay to confirm. Taskrs never pay to book a task. Before requesting a task, a Taskr must finish payout setup with Stripe Connect, because the Seeker&rsquo;s payment goes to the Taskr&rsquo;s payout account.</p>
 <p><strong>2.3 The Seeker confirms by paying.</strong> The Seeker always pays for the task. To confirm, the Seeker pays the requested price in the app through Stripe. On a negotiable task, paying the Taskr&rsquo;s price means the Seeker agrees to that price. When payment succeeds:</p>
 <ul>
   <li>the booking is confirmed;</li>
-  <li>the payment is held in escrow; and</li>
+  <li>the payment is held in escrow;</li>
+  <li>the Taskr&rsquo;s proposed date and start time becomes the booking&rsquo;s scheduled start (Section 2.5); and</li>
   <li>the work address is shared with the Taskr.</li>
 </ul>
 <p><strong>2.4 Withdrawing, declining, and expiry.</strong> Until the Seeker pays:</p>
@@ -228,9 +232,20 @@ TERMS = f"""
   <li>if the Seeker doesn&rsquo;t pay within <strong>24 hours</strong>, the request <strong>expires</strong>.</li>
 </ul>
 <p>In each case, the request ends, no one is charged, and the listing goes back on the board.</p>
-<p><strong>2.5 Escrow and release.</strong> The Seeker&rsquo;s payment stays in escrow while the task is done. When both the Seeker and the Taskr confirm the job is complete, the payment is released <strong>48 hours</strong> later, unless either party opens a dispute during that window. If there&rsquo;s a problem, either party can open a dispute (Section 7).</p>
-<p>If one party confirms the job is complete and the other party doesn&rsquo;t confirm or open a dispute within <strong>48 hours</strong>, the job is treated as confirmed. The 48-hour dispute window then begins, and if no one opens a dispute, the payment is released to the Taskr. Either party can open a dispute during either window. If neither party confirms, the payment stays held until Taskr support resolves it.</p>
-<p><strong>2.6 Payout and platform fee.</strong> When the payment is released, the <strong>Taskr receives 90%</strong> of the task price through Stripe Connect, and Taskr keeps a <strong>10% platform fee</strong>. To receive payouts, the Taskr must complete Stripe Connect setup. Exact amounts are shown in the app before the Seeker pays.</p>
+<p><strong>2.5 Start time, escrow, and release.</strong> When a Taskr requests a task, they propose a date and start time. When the Seeker pays to confirm (Section 2.3), they accept that time, and it becomes the booking&rsquo;s <strong>scheduled start</strong>. Start times are shown in your local time (Alaska Time for Alaska bookings). The scheduled start can&rsquo;t be changed after payment (Section 8).</p>
+<p>The Seeker is charged when they pay, and the payment is held in escrow until the job is confirmed done. When both the Seeker and the Taskr confirm the job is complete, the payment is released <strong>48 hours</strong> later, unless either party opens a dispute during that window. On release, the Taskr receives 90% and Taskr keeps a 10% platform fee (Section 2.6).</p>
+<p>If one party confirms the job is complete and the other party doesn&rsquo;t confirm or open a dispute within <strong>48 hours</strong>, the job is treated as confirmed. The 48-hour dispute window then begins, and if no one opens a dispute, the payment is released to the Taskr. If neither party confirms, the payment stays held until Taskr support resolves it.</p>
+<p><strong>Disputes.</strong> Either party can open a dispute in the app any time after the Seeker pays, until the payment is released. You don&rsquo;t have to confirm the job is complete first. While a dispute is open, the held payment is not released (Section 7). After the payment is released, a dispute can&rsquo;t be opened in the app. Email {SUPPORT_MAILTO} instead.</p>
+<p><strong>Frozen funds.</strong> If a card chargeback is filed on a booking, or a Taskr&rsquo;s account is banned, any held payment that hasn&rsquo;t been released yet is frozen while we review it. When a Taskr is banned, any listing they were booked on goes back on the board as Open, and their open requests are withdrawn.</p>
+<p><strong>Banned Seekers.</strong> If a Seeker&rsquo;s account is banned, each of their paid bookings is handled this way:</p>
+<ul>
+  <li>if the Taskr hasn&rsquo;t marked the job as started, the booking is cancelled and the Seeker gets a <strong>full refund</strong>, with no late fee;</li>
+  <li>if the job has started and the Seeker hasn&rsquo;t confirmed it complete (including when only the Taskr has confirmed), the held payment is frozen and Taskr support decides whether to refund the Seeker or release the payment to the Taskr (Section 7); and</li>
+  <li>if the Seeker has confirmed the job complete (alone or together with the Taskr), or the job is treated as confirmed under this section, the payment is released to the Taskr as usual.</li>
+</ul>
+<p>The banned Seeker&rsquo;s listings close.</p>
+<p>Cancellations, late cancellations, and no-shows are covered in Section 8. We also email both parties about booking events, such as a new request, a confirmed booking, a cancellation, a refund, or a dispute.</p>
+<p><strong>2.6 Payout and platform fee.</strong> When the payment is released, the <strong>Taskr receives 90%</strong> of the task price through Stripe Connect, and Taskr keeps a <strong>10% platform fee</strong>. If a Seeker cancels late, the late cancellation fee is split the same way: 90% to the Taskr and 10% to Taskr (Section 8). To receive payouts, the Taskr must complete Stripe Connect setup. Exact amounts are shown in the app before the Seeker pays.</p>
 <p><strong>2.7 Tips.</strong> After the payment is released, the Seeker can choose to tip the Taskr in the app. Tips are paid by the Seeker, go <strong>100% to the Taskr</strong> (Taskr takes no fee on tips), and are optional.</p>
 <p>Payments, escrow, payouts, and tips are processed by Stripe and are also covered by Section 5 and Stripe&rsquo;s terms.</p>
 
@@ -239,8 +254,8 @@ TERMS = f"""
   <li>You must provide accurate information and keep it current.</li>
   <li>You are responsible for activity under your account and for safeguarding login/OTP access.</li>
   <li>One account may act as <strong>both</strong> Seeker and Taskr (<strong>dual-role</strong>), subject to these Terms and any in-app role rules.</li>
-  <li>We may suspend or terminate accounts that violate these Terms, applicable law, or our <a href="../guidelines/">Community Guidelines</a>.</li>
-  <li>You can delete your account at any time in the app under <strong>Profile &rarr; Delete account</strong>. See <a href="../delete-account/">Delete your account</a>.</li>
+  <li>We may suspend or terminate accounts that violate these Terms, applicable law, or our <a href="../guidelines/">Community Guidelines</a>. If we ban your account, we&rsquo;ll email you the reason. You can appeal by writing to {SUPPORT_MAILTO}. You can still delete your account while it is banned. Section 2.5 explains what happens to bookings and held payments after a ban.</li>
+  <li>You can delete your account at any time in the app under <strong>Profile &rarr; Delete account</strong>, even if it is banned or you have bookings in progress. Your personal details (your name, email address, photos, and addresses) are deleted right away and removed from our backups within 30 days, and you can&rsquo;t sign in to the account again. Your bookings are handled as described in Section 8, item 9. We keep payment and booking records with your identity removed, for legal, tax, and fraud-prevention reasons. See <a href="../delete-account/">Delete your account</a>.</li>
 </ol>
 
 <h2>4. Listings, booking, and address privacy</h2>
@@ -249,7 +264,7 @@ TERMS = f"""
   <li><strong>Street-level address privacy:</strong> Before a booking is confirmed, public board/map views may show approximate location (for example pins using coordinates) <strong>without</strong> revealing the full street address. Full work address is shared with the Taskr <strong>after</strong> the Seeker pays and the booking is confirmed, as needed to perform the task.</li>
   <li>Taskrs request open listings (see Section 2). A request holds the listing until the Seeker pays, declines, or the request is withdrawn or expires. Taskrs never pay to request a task. Escrow starts when the Seeker pays.</li>
   <li>While another Taskr&rsquo;s request is pending, the listing isn&rsquo;t available. It returns to the board if that request is withdrawn, declined, or expires.</li>
-  <li>Seekers may cancel eligible <strong>draft/open</strong> listings per in-app rules before a booking is confirmed. If a request is pending, decline it first. After a booking is confirmed, cancellation and refunds follow Section 8 and our dispute process.</li>
+  <li>Seekers may cancel eligible <strong>draft/open</strong> listings per in-app rules before a booking is confirmed. If a request is pending, decline it first. After a booking is confirmed, cancellation and refunds follow Section 8 (including the 24-hour cancellation rule) and our dispute process.</li>
 </ol>
 
 <h2>5. Payments, escrow, platform fee, and tips</h2>
@@ -262,14 +277,14 @@ TERMS = f"""
       <li><strong>90%</strong> to the Taskr (payout via Stripe Connect); and</li>
       <li>a <strong>10%</strong> platform fee to Arctic Autonomy Ventures LLC d/b/a Taskr.</li>
     </ul>
-    Amounts are rounded to the cent and shown in the app before the Seeker pays.
+    Amounts are rounded to the cent and shown in the app before the Seeker pays. If a Seeker cancels late, the late cancellation fee is split the same way: 90% to the Taskr and 10% to Taskr (Section 8).
   </li>
   <li>Exact amounts, timing, and currency are shown in-app. Taxes (if any) are your responsibility unless we state otherwise in writing.</li>
 </ol>
 <h3>5.2 Dual confirmation and release</h3>
 <ol>
   <li>Completion requires <strong>dual confirmation</strong>: the Seeker and the Taskr both confirm the work is done.</li>
-  <li>The payment is released <strong>48 hours</strong> after both confirm (or after the job is treated as confirmed under Section 2.5), unless either party opens a dispute during that window (Section 7).</li>
+  <li>The payment is released <strong>48 hours</strong> after both confirm (or after the job is treated as confirmed under Section 2.5), unless either party opens a dispute during that window (Section 7). Payment isn&rsquo;t released while a dispute is open, or while funds are frozen after a chargeback or a Taskr ban (Section 2.5).</li>
   <li>After release, escrow is paid out per the split above. We may adjust release timing with notice in the app.</li>
 </ol>
 <h3>5.3 Tips</h3>
@@ -290,8 +305,8 @@ TERMS = f"""
 
 <h2>7. Disputes between Seekers and Taskrs</h2>
 <ol>
-  <li>If something goes wrong (quality, no-show, incomplete work, payment issues), use in-app dispute tools where available.</li>
-  <li>We may review evidence (messages, photos, confirmations) and take actions we believe are fair, including refunds, partial release, account limits, or other remedies.</li>
+  <li>If something goes wrong (quality, incomplete work, payment issues), open a dispute in the app any time after payment, until the payment is released. After the payment is released, email {SUPPORT_MAILTO} instead. For a Taskr no-show, use <strong>Taskr didn&rsquo;t show</strong> (Section 8, item 7).</li>
+  <li>Taskr support reviews each dispute. We may look at evidence (messages, photos, confirmations) and then either refund the Seeker or release the payment to the Taskr. We may also limit accounts or take other steps allowed by these Terms. To reach support, email {SUPPORT_MAILTO}.</li>
   <li>Our decision on platform escrow disputes is final as between you and the platform for escrow disposition, without limiting your rights against the other party under law.</li>
   <li>Opening multiple disputes on the same matter may be rejected as already disputed/resolved.</li>
 </ol>
@@ -300,9 +315,25 @@ TERMS = f"""
 <ol>
   <li><strong>Before a request:</strong> Seekers may cancel eligible open/draft listings per in-app rules.</li>
   <li><strong>Pending requests (awaiting payment):</strong> a Taskr can withdraw and a Seeker can decline a request before payment, and unpaid requests expire after <strong>24 hours</strong>. No one is charged and the listing reopens.</li>
-  <li><strong>After the Seeker pays:</strong> cancellations, refunds, and payouts depend on the booking&rsquo;s status as shown in the app (confirmed: paid and in escrow; completed; released; disputed; refunded) and any dispute outcome. A booking that is still awaiting payment follows item 2.</li>
-  <li>We do not guarantee refunds in every case. Chargebacks filed in bad faith may lead to account suspension.</li>
+  <li><strong>Seeker cancels 24 hours or more before the scheduled start:</strong> the Seeker gets a <strong>full refund</strong>. <strong>1-hour grace period:</strong> a Seeker who cancels within <strong>1 hour</strong> of paying also gets a <strong>full refund</strong>, with no late fee, as long as the scheduled start hasn&rsquo;t passed. This applies even if the start is less than 24 hours away. The listing then closes.</li>
+  <li><strong>Seeker cancels less than 24 hours before the scheduled start:</strong> unless the 1-hour grace period in item 3 applies, the Seeker is refunded the price minus a <strong>late cancellation fee</strong> of <strong>20% of the price, up to $25</strong>. The Taskr receives 90% of the late fee, and Taskr keeps 10%. The Taskr&rsquo;s share is released <strong>48 hours</strong> after the cancellation, unless either party opens a dispute during that window. For example, on a $60 task the late fee is $12: the Seeker gets $48 back and the Taskr receives $10.80. On a $200 task the fee is capped at $25: the Seeker gets $175 back and the Taskr receives $22.50. The listing then closes.</li>
+  <li><strong>After the scheduled start:</strong> the Seeker can no longer cancel. If something goes wrong, open a dispute (Section 7), or use <strong>Taskr didn&rsquo;t show</strong> if item 7 applies.</li>
+  <li><strong>Taskr cancels:</strong> if the Taskr cancels a booking at any time, the Seeker gets a <strong>full refund</strong>, with no late fee. The listing goes back on the board as Open automatically. If a Taskr cancels 3 bookings within 30 days, their account is flagged for review. A no-show (item 7) counts as a cancellation for this purpose. If the Seeker asked the Taskr in the booking chat to cancel, Taskr support can clear that cancellation so it doesn&rsquo;t count. To ask, email {SUPPORT_MAILTO}.</li>
+  <li><strong>Taskr no-show:</strong> if the Taskr hasn&rsquo;t marked the job as started <strong>2 hours</strong> after the scheduled start, a <strong>Taskr didn&rsquo;t show</strong> button appears for the Seeker in the app. It stays until the Taskr marks the job as started. If the Seeker taps it, the booking is cancelled and the Seeker gets an instant <strong>full refund</strong>, with no late fee. The listing goes back on the board as Open automatically. The refund stands even if the Taskr marks the job as started afterward. If the Taskr marks the job as started before the Seeker taps the button, the button goes away, and the Seeker can still open a dispute (Section 7).</li>
+  <li><strong>Changing the time:</strong> the scheduled start can&rsquo;t be changed after payment. To change it, either party cancels under the rules above. If the Taskr cancels, the listing goes back on the board and the Taskr can request it again with the new time. If the Seeker cancels, the listing closes, and the Seeker posts the task again.</li>
+  <li><strong>Account deletion:</strong> if the Seeker or the Taskr deletes their account, each of their paid bookings is handled this way:
+    <ul>
+      <li>if the Taskr hasn&rsquo;t marked the job as started, the booking is cancelled and the Seeker gets a <strong>full refund</strong>, with no late fee, no matter which side deleted;</li>
+      <li>if the job has started but isn&rsquo;t confirmed complete, the held payment stays frozen until Taskr support decides whether to refund the Seeker or release the payment to the Taskr (Section 7); and</li>
+      <li>if the job is confirmed complete, or treated as confirmed, the payment is released to the Taskr as usual. Payouts go to the Taskr&rsquo;s own Stripe account, which the Taskr can still reach through Stripe after deleting their Taskr account.</li>
+    </ul>
+    If the Seeker deletes their account, their listings close. If the Taskr deletes their account, any listing they were booked on goes back on the board as Open.
+  </li>
+  <li><strong>Banned accounts:</strong> if an account is banned, its bookings and held payments are handled as described in Section 2.5.</li>
+  <li><strong>Disputes:</strong> in any other case, whether you get a refund depends on the outcome of the dispute (Section 7).</li>
+  <li><strong>Chargebacks:</strong> if a card chargeback is filed, any held payment that hasn&rsquo;t been released yet is frozen while we review it. Chargebacks filed in bad faith may lead to account suspension.</li>
 </ol>
+<p>Card refunds may take 5&ndash;10 business days to appear on your statement.</p>
 
 <h2>9. Independent contractors; no employment</h2>
 <p>Taskrs are independent contractors (or otherwise self-employed) relative to Seekers and to Taskr, unless a written agreement says otherwise. Nothing in these Terms creates an employment, partnership, or joint-venture relationship. Taskrs are responsible for their own tools, licenses, insurance, and taxes as required by law (including Alaska local requirements where applicable).</p>
@@ -339,6 +370,7 @@ TERMS = f"""
 
 <h2>17. Contact</h2>
 <p>Questions about these Terms: {MAILTO} &middot; Arctic Autonomy Ventures LLC, 12110 Business Blvd STE 6 PMB 162, Eagle River, AK 99577.</p>
+<p>For help with a task, a payment, a dispute, or your account, email {SUPPORT_MAILTO}.</p>
 """
 
 # ---------------------------------------------------------------- guidelines
@@ -356,7 +388,7 @@ GUIDELINES = f"""
 
 <h2>Do</h2>
 <ul>
-  <li>Post accurate listings and show up (or cancel early when rules allow).</li>
+  <li>Post accurate listings and show up on time. If you need to cancel, follow the rules in <a href="../terms/">Terms Section 8</a>. Taskrs who cancel or don&rsquo;t show up for 3 bookings within 30 days are flagged for review.</li>
   <li>Keep chat focused on the task.</li>
   <li>Protect privacy: don&rsquo;t share someone&rsquo;s full address or personal info beyond what&rsquo;s needed.</li>
   <li>Use escrow and in-app payments for Taskr tasks.</li>
@@ -374,8 +406,8 @@ GUIDELINES = f"""
 </ul>
 
 <h2>Enforcement</h2>
-<p>We may warn, limit features, suspend, or ban accounts that break these guidelines, our Terms, or the law. Serious safety or fraud issues may be reported to authorities.</p>
-<p>Questions: {MAILTO}</p>
+<p>We may warn, limit features, suspend, or ban accounts that break these guidelines, our Terms, or the law. Serious safety or fraud issues may be reported to authorities. If you&rsquo;re banned, we&rsquo;ll email you the reason, and you can appeal at {SUPPORT_MAILTO}.</p>
+<p>Questions: {SUPPORT_MAILTO}</p>
 """
 
 # ---------------------------------------------------------------- delete account
@@ -396,7 +428,7 @@ DELETE = f"""
 
 <h2>Option 2: Request deletion by email</h2>
 <div class="card">
-<p>If you can't use the app, email <a href="mailto:{EMAIL}?subject=Delete%20my%20Taskr%20account">{EMAIL}</a>:</p>
+<p>If you can't use the app, email <a href="mailto:{SUPPORT}?subject=Delete%20my%20Taskr%20account">{SUPPORT}</a>:</p>
 <ul>
   <li>Send it <strong>from the email address on your Taskr account</strong>, so we can confirm the request is yours.</li>
   <li>Use the subject line <strong>"Delete my Taskr account"</strong>.</li>
@@ -405,28 +437,36 @@ DELETE = f"""
 </div>
 
 <div class="card callout">
-<p><strong>Before you delete:</strong> withdraw or decline any pending requests, and finish or cancel any active bookings first. We can't delete an account while a booking is awaiting payment (a pending request), booked, in progress, waiting for confirmation, or in dispute, or while payment is held in escrow. If you're a Taskr, make sure any pending payout has been paid out.</p>
+<p><strong>You can always delete your account</strong>, even if it is banned or you have bookings in progress. Here's what happens to your bookings when you delete (see <a href="../terms/">Terms Section 8</a>):</p>
+<ul>
+  <li><strong>Work hasn't started:</strong> the booking is cancelled and the Seeker gets a full refund, with no late fee, no matter which side deleted.</li>
+  <li><strong>Work has started but isn't confirmed:</strong> the payment stays frozen until Taskr support decides whether to refund the Seeker or release the payment to the Taskr.</li>
+  <li><strong>Finished and confirmed:</strong> the payment is released to the Taskr as usual.</li>
+</ul>
+<p>Requests still waiting for payment end, and no one is charged. If you're a Seeker, your listings close. If you're a Taskr, any listing you were booked on goes back on the board as Open.</p>
 </div>
 
 <h2>What we delete</h2>
+<p>These are deleted right away when you delete your account, and removed from our backups within 30 days:</p>
 <ul>
-  <li>Your email address, display name, home ZIP code, and listed skills. Your profile is replaced with "Deleted user."</li>
-  <li>Your draft and open listings, which are cancelled, and their photos.</li>
+  <li>Your display name, email address, home ZIP code, and listed skills. Your profile is replaced with "Deleted user."</li>
+  <li>Your photos, and the addresses on your tasks.</li>
+  <li>Your draft and open listings, which are cancelled.</li>
   <li>Blocks you set.</li>
-  <li>Your ability to sign in, and your sign-in codes (which expire after 10 minutes anyway).</li>
+  <li>Your ability to sign in, and your sign-in codes (which expire after 10 minutes anyway). You can't sign in to a deleted account again.</li>
 </ul>
-<p>If you set up payouts, your identity and bank details are held by Stripe, not Taskr. Stripe keeps its own records of your Connect account under <a href="https://stripe.com/privacy" rel="noopener">Stripe's privacy policy</a>.</p>
+<p>If you set up payouts, your identity and bank details are held by Stripe, not Taskr. Payouts for finished jobs still go to your own Stripe account, and you can still reach that account through Stripe after you delete your Taskr account. Stripe keeps its own records of your Connect account under <a href="https://stripe.com/privacy" rel="noopener">Stripe's privacy policy</a>.</p>
 
 <h2>What we keep, and for how long</h2>
 <ul>
-  <li><strong>Booking, payment, and dispute records</strong> (for example amounts, platform fees, payouts, tips, confirmations, and dispute outcomes), which we must keep for legal, tax, accounting, fraud-prevention, and dispute purposes. We keep these for <strong>up to 7 years</strong>, with your identity removed where possible.</li>
+  <li><strong>Booking, payment, and dispute records</strong> (for example amounts, platform fees, payouts, tips, refunds, cancellations, confirmations, and dispute outcomes), which we must keep for legal, tax, accounting, fraud-prevention, and dispute purposes. We keep these for <strong>up to 7 years</strong>, with your identity removed.</li>
   <li>Ratings and booking chat messages that are part of those records may stay attached to the booking, shown as from "Deleted user."</li>
   <li><strong>Reports you filed</strong>, kept with your identity removed for safety, moderation, and legal reasons, on the same retention terms as the records above. Reports other people filed about you may be kept for moderation.</li>
   <li>Information we must keep to comply with a legal obligation or to resolve an open legal claim, only for as long as that requires.</li>
 </ul>
 
 <h2>Timeline</h2>
-<p>We complete deletion within <strong>30 days</strong> of your request. Retained records are deleted at the end of their retention period (up to 7 years).</p>
+<p>Your personal details are deleted right away when you delete your account, and removed from our backups within <strong>30 days</strong>. Booking and payment records are kept with your identity removed, and are deleted at the end of their retention period (up to 7 years).</p>
 
 <h2>Delete some data without deleting your account</h2>
 <ul>
@@ -434,7 +474,7 @@ DELETE = f"""
   <li>Unblock users in <strong>Profile</strong>.</li>
   <li>Cancel your draft or open listings in the app to remove them and their photos.</li>
   <li>Turn off location access in your device settings at any time.</li>
-  <li>For anything else, email {MAILTO} from your account email.</li>
+  <li>For anything else, email {SUPPORT_MAILTO} from your account email.</li>
 </ul>
 
 <p>See our <a href="../privacy/">Privacy Policy</a> for more on how Taskr handles your data.</p>
